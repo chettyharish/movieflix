@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 		@NamedQuery(name = "User.findAll", query = "SELECT u from User u "),
 		@NamedQuery(name = "User.findOne", query = "SELECT u from User u where u.userId = :pId "),
-		@NamedQuery(name = "User.findCommentList", query = "SELECT c from User u JOIN Comment c where u.userId = :pId"),
+		@NamedQuery(name = "User.findCommentList", query = "SELECT c from User u JOIN u.commentList c where u.userId = :pId"),
 		@NamedQuery(name = "User.findAddress", query = "SELECT u.address from User u where u.userId = :pId"),
 		@NamedQuery(name = "User.findPayment", query = "SELECT u.payment from User u where u.userId = :pId")
 

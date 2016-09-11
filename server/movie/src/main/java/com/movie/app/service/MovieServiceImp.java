@@ -30,6 +30,86 @@ public class MovieServiceImp implements MovieService {
 		return existingTemp;
 	}
 
+	@Override
+	public List<Movie> findAllType(String movieId) {
+		return repository.findAllType(movieId);
+	}
+
+	@Override
+	public List<Movie> findAllYear(int year) {
+		return repository.findAllYear(year);
+	}
+
+	@Override
+	public String findAllActors(String movieId) {
+		return repository.findAllActors(movieId);
+	}
+
+	@Override
+	public String findAllDirectors(String movieId) {
+		return repository.findAllDirectors(movieId);
+	}
+
+	@Override
+	public String findAllWriters(String movieId) {
+		return repository.findAllWriters(movieId);
+	}
+
+	@Override
+	public String findAllCountry(String movieId) {
+		return repository.findAllCountry(movieId);
+	}
+
+	@Override
+	public double findMetascore(String movieId) {
+		return repository.findMetascore(movieId);
+	}
+
+	@Override
+	public double findIMDBRating(String movieId) {
+		return repository.findIMDBRating(movieId);
+	}
+
+	@Override
+	public double findIMDBVotes(String movieId) {
+		return repository.findIMDBVotes(movieId);
+	}
+
+	@Override
+	public String findIMDBId(String movieId) {
+		return repository.findIMDBId(movieId);
+	}
+
+	@Override
+	public List<Movie> findAllGenre(String Genre) {
+		return repository.findAllGenre(Genre);
+	}
+
+	@Override
+	public List<Movie> findByName(String Name) {
+		return repository.findByName(Name);
+	}
+
+	@Override
+	public List<Movie> findCommentList(String movieId) {
+		return repository.findCommentList(movieId);
+	}
+
+	@Override
+	public List<Movie> findAllRating(String movieId) {
+		return repository.findAllRating(movieId);
+	}
+
+	@Override
+	public List<Movie> findSortedMovieIMDBRating(String order) {
+		return repository.findSortedMovieIMDBRating(order);
+	}
+
+	@Override
+	public List<Movie> findSortedMovieIMDBVotes(String order) {
+		return repository.findSortedMovieIMDBVotes(order);
+	}
+
 	@Transactional
 	@Override
 	public Movie create(Movie movie) {
@@ -57,4 +137,5 @@ public class MovieServiceImp implements MovieService {
 		repository.delete(existingTemp);
 
 	}
+
 }

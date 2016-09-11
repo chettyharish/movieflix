@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -25,20 +26,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 		@NamedQuery(name = "Movie.findActors", query = "SELECT m.actors from Movie m where  m.movieId = :pId"),
 		@NamedQuery(name = "Movie.findDirectors", query = "SELECT m.directors from Movie m where  m.movieId = :pId"),
 		@NamedQuery(name = "Movie.findWriters", query = "SELECT m.writers from Movie m where  m.movieId = :pId"),
-		@NamedQuery(name = "Movie.findCountry", query = "SELECT m.writers from Movie m where  m.movieId = :pId"),
+		@NamedQuery(name = "Movie.findCountry", query = "SELECT m.country from Movie m where  m.movieId = :pId"),
 
-		@NamedQuery(name = "Movie.findAllGenre", query = "SELECT m from Movie m where LOWER(m.genre) LIKE CONCAT('%',LOWER(:pType),'%')"),
-		@NamedQuery(name = "Movie.findByName", query = "SELECT m from Movie m where LOWER(m.title) LIKE CONCAT('%',LOWER(:ptitle),'%')"),
+		@NamedQuery(name = "Movie.findAllGenre", query = "SELECT m from Movie m where LOWER(m.genre) LIKE CONCAT('%',LOWER(:pGenre),'%')"),
+		@NamedQuery(name = "Movie.findByName", query = "SELECT m from Movie m where LOWER(m.title) LIKE CONCAT('%',LOWER(:pTitle),'%')"),
 
-		@NamedQuery(name = "Movie.findCommentList", query = "SELECT c from Movie m JOIN Comment c where m.movieId = :pId"),
-		@NamedQuery(name = "Movie.findRating", query = "SELECT c.rating from Movie m JOIN Comment c where m.movieId = :pId"),
-
+		@NamedQuery(name = "Movie.findCommentList", query = "SELECT c from Movie m JOIN m.commentList c where m.movieId = :pId "),
+		@NamedQuery(name = "Movie.findAllRating", query = "SELECT c.rating from Movie m JOIN m.commentList c where m.movieId = :pId"),
+		
+		@NamedQuery(name = "Movie.findMetascore", query = "SELECT m.metaScore from Movie m where m.movieId = :pId"),		
 		@NamedQuery(name = "Movie.findIMDBRating", query = "SELECT m.imdbRating from Movie m where m.movieId = :pId"),
 		@NamedQuery(name = "Movie.findIMDBVotes", query = "SELECT m.imdbVotes from Movie m where m.movieId = :pId"),
 		@NamedQuery(name = "Movie.findIMDBId", query = "SELECT m.imdbID from Movie m where m.movieId = :pId"),
-		@NamedQuery(name = "Movie.findSortedMovieIMDBRating", query = "SELECT m from Movie m ORDER BY m.imdbRating"),
-		@NamedQuery(name = "Movie.findSortedMovieIMDBVotes", query = "SELECT m from Movie m ORDER BY m.imdbVotes")
-
+		
+		@NamedQuery(name = "Movie.findSortedMovieIMDBRating", query = "SELECT m from Movie m ORDER BY m.imdbRating ASC"),
+		@NamedQuery(name = "Movie.findSortedMovieIMDBVotes", query = "SELECT m from Movie m ORDER BY m.imdbVotes ASC"),
+		@NamedQuery(name = "Movie.findSortedMovieIMDBRatingDESC", query = "SELECT m from Movie m ORDER BY m.imdbRating DESC "),
+		@NamedQuery(name = "Movie.findSortedMovieIMDBVotesDESC", query = "SELECT m from Movie m ORDER BY m.imdbVotes DESC")
 })
 
 public class Movie {
@@ -49,7 +53,7 @@ public class Movie {
 	private String title;
 
 	@JsonProperty("Year")
-	private double year;
+	private int year;
 
 	@JsonProperty("Rated")
 	private String rated;
@@ -65,27 +69,35 @@ public class Movie {
 	private String genre;
 
 	@JsonProperty("Director")
+	@Column(length=1024)
 	private String directors;
 
 	@JsonProperty("Writer")
+	@Column(length=1024)
 	private String writers;
 
 	@JsonProperty("Actors")
+	@Column(length=1024)
 	private String actors;
 
 	@JsonProperty("Language")
+	@Column(length=1024)
 	private String language;
 
 	@JsonProperty("Country")
+	@Column(length=1024)
 	private String country;
 
 	@JsonProperty("Plot")
+	@Column(length=8194)
 	private String plot;
 
 	@JsonProperty("Awards")
+	@Column(length=1024)
 	private String awards;
 
 	@JsonProperty("Poster")
+	@Column(length=1024)
 	private String poster;
 
 	@JsonProperty("Metascore")
@@ -122,11 +134,11 @@ public class Movie {
 		this.title = title;
 	}
 
-	public double getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(double year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 
