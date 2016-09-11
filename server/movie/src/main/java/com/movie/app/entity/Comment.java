@@ -5,17 +5,22 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table
-@NamedQueries({@NamedQuery(name = "Comment.findAll", query = "SELECT c from Comment c ")})
+@NamedQueries({})
 
 public class Comment {
 	@Id
 	private String commentId;
+
+	@JsonProperty("Text")
 	private String text;
+
+	@JsonProperty("Rating")
 	private int rating;
 
 	public Comment() {

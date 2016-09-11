@@ -13,23 +13,46 @@ import javax.persistence.Table;
 
 import org.joda.time.DateTime;
 
-import com.movie.app.enumeration.GenderType;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table
 @NamedQueries({
-		@NamedQuery(name = "User.findAll", query = "SELECT u from User u ")
+
+		@NamedQuery(name = "User.findAll", query = "SELECT u from User u "),
+		@NamedQuery(name = "User.findOne", query = "SELECT u from User u where u.userId = :pId "),
+		@NamedQuery(name = "User.findCommentList", query = "SELECT u from User u JOIN Comment c where u.userId = :pId"),
+		@NamedQuery(name = "User.findAddress", query = "SELECT u.address from User u where u.userId = :pId"),
+		@NamedQuery(name = "User.findPayment", query = "SELECT u.payment from User u where u.userId = :pId")
+
 })
 public class User {
 
 	@Id
 	private String userId;
+
+	@JsonProperty("FirstName")
 	private String firstName;
+
+	@JsonProperty("LastName")
 	private String lastName;
+
+	@JsonProperty("PhoneNumber")
 	private String phoneNumber;
+
+	@JsonProperty("EmailAddress")
 	private String emailAddress;
-	private GenderType gender;
+
+	@JsonProperty("Gender")
+	private String gender;
+
+	@JsonProperty("CreateDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private DateTime createDate;
+
+	@JsonProperty("UpdateDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private DateTime updateDate;
 
 	@OneToOne
@@ -84,11 +107,11 @@ public class User {
 		this.emailAddress = emailAddress;
 	}
 
-	public GenderType getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(GenderType gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 

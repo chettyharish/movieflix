@@ -16,7 +16,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table
-@NamedQueries({ @NamedQuery(name = "Movie.findAll", query = "SELECT m from Movie m ") })
+@NamedQueries({
+
+		@NamedQuery(name = "Movie.findAll", query = "SELECT m from Movie m "),
+		@NamedQuery(name = "Movie.findOne", query = "SELECT m from Movie m where m.movieId = :pId "),
+		@NamedQuery(name = "Movie.findAllType", query = "SELECT m from Movie m where m.type=:pType"),
+		@NamedQuery(name = "Movie.findAllYear", query = "SELECT m from Movie m where m.year=:pYear"),
+		@NamedQuery(name = "Movie.findActors", query = "SELECT m.actors from Movie m where  m.movieId = :pId"),
+		@NamedQuery(name = "Movie.findDirectors", query = "SELECT m.directors from Movie m where  m.movieId = :pId"),
+		@NamedQuery(name = "Movie.findWriters", query = "SELECT m.writers from Movie m where  m.movieId = :pId"),
+		@NamedQuery(name = "Movie.findCountry", query = "SELECT m.writers from Movie m where  m.movieId = :pId"),
+
+		@NamedQuery(name = "Movie.findAllGenre", query = "SELECT m from Movie m where LOWER(m.genre) LIKE CONCAT('%',LOWER(:pType),'%')"),
+		@NamedQuery(name = "Movie.findByName", query = "SELECT m from Movie m where LOWER(m.title) LIKE CONCAT('%',LOWER(:ptitle),'%')"),
+
+		@NamedQuery(name = "Movie.findCommentList", query = "SELECT c from Movie m JOIN Comment c where m.movieId = :pId"),
+		@NamedQuery(name = "Movie.findRating", query = "SELECT c.rating from Movie m JOIN Comment c where m.movieId = :pId"),
+
+		@NamedQuery(name = "Movie.findIMDBRating", query = "SELECT m.imdbRating from Movie m where m.movieId = :pId"),
+		@NamedQuery(name = "Movie.findIMDBVotes", query = "SELECT m.imdbVotes from Movie m where m.movieId = :pId"),
+		@NamedQuery(name = "Movie.findIMDBId", query = "SELECT m.imdbID from Movie m where m.movieId = :pId"),
+		@NamedQuery(name = "Movie.findSortedMovieIMDBRating", query = "SELECT m from Movie m ORDER BY m.imdbRating"),
+		@NamedQuery(name = "Movie.findSortedMovieIMDBVotes", query = "SELECT m from Movie m ORDER BY m.imdbVotes")
+
+})
+
 public class Movie {
 	@Id
 	private String movieId;
@@ -41,10 +65,10 @@ public class Movie {
 	private String genre;
 
 	@JsonProperty("Director")
-	private String director;
+	private String directors;
 
 	@JsonProperty("Writer")
-	private String writer;
+	private String writers;
 
 	@JsonProperty("Actors")
 	private String actors;
@@ -139,19 +163,19 @@ public class Movie {
 	}
 
 	public String getDirector() {
-		return director;
+		return directors;
 	}
 
 	public void setDirector(String director) {
-		this.director = director;
+		this.directors = director;
 	}
 
 	public String getWriter() {
-		return writer;
+		return writers;
 	}
 
 	public void setWriter(String writer) {
-		this.writer = writer;
+		this.writers = writer;
 	}
 
 	public String getActors() {

@@ -10,13 +10,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.movie.app.enumeration.AccessType;
 
 @Entity
 @Table
 @NamedQueries({
-	@NamedQuery(name = "Authenticator.findAll", query = "SELECT a from Authenticator a "), 
-	@NamedQuery(name = "Authenticator.findByUserName", query = "SELECT a from Authenticator a where a.userName=:pUserName AND a.password=:pPassword")
+
+		@NamedQuery(name = "Authenticator.findByUserName", query = "SELECT a from Authenticator a where a.userName=:pUserName AND a.password=:pPassword")
+
 })
 public class Authenticator {
 
@@ -24,10 +26,13 @@ public class Authenticator {
 	private String authenticatorId;
 
 	@Column(unique = true)
+	@JsonProperty("UserName")
 	private String userName;
-	
-	/*Convert to hash value*/
+
+	@JsonProperty("Password")
 	private String password;
+
+	@JsonProperty("Type")
 	private AccessType type;
 
 	@OneToOne

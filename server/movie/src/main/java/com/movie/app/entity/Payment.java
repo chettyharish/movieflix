@@ -10,17 +10,35 @@ import javax.persistence.Table;
 
 import org.joda.time.DateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table
-@NamedQueries({ @NamedQuery(name = "Payment.findAll", query = "SELECT p from Payment p "),
-		@NamedQuery(name = "Payment.findByCCNumber", query = "SELECT p from Payment p where p.ccNumber=:pCCNumber") })
+@NamedQueries({
+
+		@NamedQuery(name = "Payment.findByPaymentId", query = "SELECT p from Payment p where p.paymentId=:ppaymentId")
+
+})
 public class Payment {
+	
 	@Id
 	private String paymentId;
+	
+	@JsonProperty("CCType")
 	private String ccType;
+
+	@JsonProperty("CCName")
 	private String ccName;
+
+	@JsonProperty("CCNumber")
 	private String ccNumber;
+
+	@JsonProperty("CCCVV")
 	private int ccCVV;
+
+	@JsonProperty("ExpiryDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private DateTime expiryDate;
 
 	public Payment() {
