@@ -35,16 +35,31 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public List<Comment> findCommentList(String userId) {
+		User existingUser = repository.findOne(userId);
+
+		if (existingUser == null) {
+			throw new UserNotFoundException("User not found");
+		}
 		return repository.findCommentList(userId);
 	}
 
 	@Override
 	public Address findAddress(String userId) {
+		User existingUser = repository.findOne(userId);
+
+		if (existingUser == null) {
+			throw new UserNotFoundException("User not found");
+		}
 		return repository.findAddress(userId);
 	}
 
 	@Override
 	public Payment findPayment(String userId) {
+		User existingUser = repository.findOne(userId);
+
+		if (existingUser == null) {
+			throw new UserNotFoundException("User not found");
+		}
 		return repository.findPayment(userId);
 	}
 

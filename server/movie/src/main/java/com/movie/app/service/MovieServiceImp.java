@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.app.entity.Movie;
+import com.movie.app.exception.IllegalSortingOrderException;
 import com.movie.app.exception.MovieNotFoundException;
 import com.movie.app.repository.MovieRepository;
 
@@ -23,15 +24,18 @@ public class MovieServiceImp implements MovieService {
 	@Override
 	public Movie findOne(String movieId) {
 		Movie existingTemp = repository.findOne(movieId);
-
 		if (existingTemp == null) {
-			throw new MovieNotFoundException("Temp not found");
+			throw new MovieNotFoundException("Movie not found");
 		}
 		return existingTemp;
 	}
 
 	@Override
 	public List<Movie> findAllType(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findAllType(movieId);
 	}
 
@@ -42,41 +46,73 @@ public class MovieServiceImp implements MovieService {
 
 	@Override
 	public String findAllActors(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findAllActors(movieId);
 	}
 
 	@Override
 	public String findAllDirectors(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findAllDirectors(movieId);
 	}
 
 	@Override
 	public String findAllWriters(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findAllWriters(movieId);
 	}
 
 	@Override
 	public String findAllCountry(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findAllCountry(movieId);
 	}
 
 	@Override
 	public double findMetascore(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findMetascore(movieId);
 	}
 
 	@Override
 	public double findIMDBRating(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findIMDBRating(movieId);
 	}
 
 	@Override
 	public double findIMDBVotes(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findIMDBVotes(movieId);
 	}
 
 	@Override
 	public String findIMDBId(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findIMDBId(movieId);
 	}
 
@@ -92,16 +128,26 @@ public class MovieServiceImp implements MovieService {
 
 	@Override
 	public List<Movie> findCommentList(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findCommentList(movieId);
 	}
 
 	@Override
 	public List<Movie> findAllRating(String movieId) {
+		Movie existingTemp = repository.findOne(movieId);
+		if (existingTemp == null) {
+			throw new MovieNotFoundException("Movie not found");
+		}
 		return repository.findAllRating(movieId);
 	}
 
 	@Override
 	public List<Movie> findSortedMovieIMDBRating(String order) {
+		if (order.compareToIgnoreCase("asc") != 0 && order.compareToIgnoreCase("desc") != 0)
+			throw new IllegalSortingOrderException("Illegal sorting order ");
 		return repository.findSortedMovieIMDBRating(order);
 	}
 

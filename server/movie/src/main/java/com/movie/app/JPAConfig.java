@@ -48,7 +48,6 @@ public class JPAConfig {
 
 	private Properties jpaProperties() {
 		Properties props = new Properties();
-		/* RESET to CREATE ONLY AT END */
 		props.setProperty(PersistenceUnitProperties.DDL_GENERATION, PersistenceUnitProperties.CREATE_ONLY);
 		props.setProperty(PersistenceUnitProperties.LOGGING_LEVEL, SessionLog.FINE_LABEL);
 		props.setProperty(PersistenceUnitProperties.WEAVING, "false");
