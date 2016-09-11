@@ -24,7 +24,7 @@ public class JPAConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource());
-		emf.setPackagesToScan("com.movie.app.entity");		
+		emf.setPackagesToScan("com.movie.app.entity");
 		emf.setJpaVendorAdapter(new EclipseLinkJpaVendorAdapter());
 		emf.setJpaProperties(jpaProperties());
 		return emf;
@@ -48,8 +48,8 @@ public class JPAConfig {
 
 	private Properties jpaProperties() {
 		Properties props = new Properties();
-		/*RESET to CREATE ONLY AT END*/
-		props.setProperty(PersistenceUnitProperties.DDL_GENERATION, PersistenceUnitProperties.DROP_AND_CREATE);
+		/* RESET to CREATE ONLY AT END */
+		props.setProperty(PersistenceUnitProperties.DDL_GENERATION, PersistenceUnitProperties.CREATE_ONLY);
 		props.setProperty(PersistenceUnitProperties.LOGGING_LEVEL, SessionLog.FINE_LABEL);
 		props.setProperty(PersistenceUnitProperties.WEAVING, "false");
 		return props;

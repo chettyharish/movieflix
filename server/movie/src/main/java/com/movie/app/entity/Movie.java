@@ -266,4 +266,16 @@ public class Movie {
 		this.type = type;
 	}
 
+	@Override
+	public String toString() {
+		return "Movie [movieId=" + movieId + ", title=" + title + ", year=" + year + ", rated=" + rated + ", released="
+				+ released + ", runTime=" + runTime + ", genre=" + genre + ", directors=" + directors + ", writers="
+				+ writers + ", actors=" + actors + ", language=" + language + ", country=" + country + ", plot=" + plot
+				+ ", awards=" + awards + ", poster=" + poster + ", metaScore=" + metaScore + ", imdbRating="
+				+ imdbRating + ", imdbVotes=" + imdbVotes + ", imdbID=" + imdbID + ", type=" + type + ", commentList="
+				+ commentList + "]";
+	}
+
+	
+	
 }

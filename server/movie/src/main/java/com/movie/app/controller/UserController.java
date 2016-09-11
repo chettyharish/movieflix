@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.movie.app.entity.Address;
+import com.movie.app.entity.Comment;
+import com.movie.app.entity.Payment;
 import com.movie.app.entity.User;
 import com.movie.app.service.UserService;
 
@@ -27,6 +30,21 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.GET, value = "{id}")
 	public User findOne(@PathVariable("id") String userId) {
 		return service.findOne(userId);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "{id}/comments")
+	public List<Comment> findCommentList(@PathVariable("id") String userId) {
+		return service.findCommentList(userId);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "{id}/addresses")
+	public Address findAddress(@PathVariable("id") String userId) {
+		return service.findAddress(userId);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "{id}/payments")
+	public Payment findPayment(@PathVariable("id") String userId) {
+		return service.findPayment(userId);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

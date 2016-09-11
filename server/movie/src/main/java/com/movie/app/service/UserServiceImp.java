@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.movie.app.entity.Address;
+import com.movie.app.entity.Comment;
+import com.movie.app.entity.Payment;
 import com.movie.app.entity.User;
 import com.movie.app.exception.UserNotFoundException;
 import com.movie.app.repository.UserRepository;
@@ -28,6 +31,21 @@ public class UserServiceImp implements UserService {
 			throw new UserNotFoundException("User not found");
 		}
 		return existingUser;
+	}
+
+	@Override
+	public List<Comment> findCommentList(String userId) {
+		return repository.findCommentList(userId);
+	}
+
+	@Override
+	public Address findAddress(String userId) {
+		return repository.findAddress(userId);
+	}
+
+	@Override
+	public Payment findPayment(String userId) {
+		return repository.findPayment(userId);
 	}
 
 	@Transactional

@@ -15,8 +15,7 @@ import com.movie.app.enumeration.AccessType;
 
 @Entity
 @Table
-@NamedQueries({
-
+@NamedQueries({ @NamedQuery(name = "Authenticator.findAll", query = "SELECT a from Authenticator a "),
 		@NamedQuery(name = "Authenticator.findByUserName", query = "SELECT a from Authenticator a where a.userName=:pUserName AND a.password=:pPassword")
 
 })

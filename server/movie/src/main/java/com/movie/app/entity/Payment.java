@@ -1,5 +1,6 @@
 package com.movie.app.entity;
 
+import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -17,14 +18,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table
 @NamedQueries({
 
+		@NamedQuery(name = "Payment.findAll", query = "SELECT p from Payment p "),
 		@NamedQuery(name = "Payment.findByPaymentId", query = "SELECT p from Payment p where p.paymentId=:ppaymentId")
 
 })
 public class Payment {
-	
+
 	@Id
 	private String paymentId;
-	
+
 	@JsonProperty("CCType")
 	private String ccType;
 
@@ -39,7 +41,7 @@ public class Payment {
 
 	@JsonProperty("ExpiryDate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private DateTime expiryDate;
+	private Date expiryDate;
 
 	public Payment() {
 		paymentId = UUID.randomUUID().toString();
@@ -81,11 +83,11 @@ public class Payment {
 		this.ccCVV = ccCVV;
 	}
 
-	public DateTime getExpiryDate() {
+	public Date getExpiryDate() {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(DateTime expiryDate) {
+	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 

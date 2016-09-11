@@ -1,8 +1,10 @@
 package com.movie.app.entity;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -11,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 		@NamedQuery(name = "User.findAll", query = "SELECT u from User u "),
 		@NamedQuery(name = "User.findOne", query = "SELECT u from User u where u.userId = :pId "),
-		@NamedQuery(name = "User.findCommentList", query = "SELECT u from User u JOIN Comment c where u.userId = :pId"),
+		@NamedQuery(name = "User.findCommentList", query = "SELECT c from User u JOIN Comment c where u.userId = :pId"),
 		@NamedQuery(name = "User.findAddress", query = "SELECT u.address from User u where u.userId = :pId"),
 		@NamedQuery(name = "User.findPayment", query = "SELECT u.payment from User u where u.userId = :pId")
 
@@ -49,19 +50,19 @@ public class User {
 
 	@JsonProperty("CreateDate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private DateTime createDate;
+	private Date createDate;
 
 	@JsonProperty("UpdateDate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private DateTime updateDate;
+	private Date updateDate;
 
-	@OneToOne
-	private Authenticator authenticator;
+	// @OneToOne
+	// private Authenticator authenticator;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Address address;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Payment payment;
 
 	@OneToMany
@@ -115,19 +116,19 @@ public class User {
 		this.gender = gender;
 	}
 
-	public DateTime getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(DateTime createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 
-	public DateTime getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(DateTime updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
 
@@ -155,20 +156,20 @@ public class User {
 		this.commentList = commentList;
 	}
 
-	public Authenticator getAuthenticator() {
-		return authenticator;
-	}
-
-	public void setAuthenticator(Authenticator authenticator) {
-		this.authenticator = authenticator;
-	}
+	// public Authenticator getAuthenticator() {
+	// return authenticator;
+	// }
+	//
+	// public void setAuthenticator(Authenticator authenticator) {
+	// this.authenticator = authenticator;
+	// }
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
 				+ phoneNumber + ", emailAddress=" + emailAddress + ", gender=" + gender + ", createDate=" + createDate
-				+ ", updateDate=" + updateDate + ", authenticator=" + authenticator + ", address=" + address
-				+ ", payment=" + payment + ", commentList=" + commentList + "]";
+				+ ", updateDate=" + updateDate + ", address=" + address + ", payment=" + payment + ", commentList="
+				+ commentList + "]";
 	}
 
 }

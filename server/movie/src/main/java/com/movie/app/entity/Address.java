@@ -5,13 +5,14 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table
-@NamedQueries({})
+@NamedQueries({ @NamedQuery(name = "Address.findAll", query = "SELECT a from Address a ")})
 public class Address {
 
 	@Id
