@@ -46,20 +46,15 @@
                     movieVm.delMovie.rating = movieVm.movieData.Rated;
                     movieVm.delMovie.type = movieVm.movieData.Type;
                     movieVm.delMovie.releaseDate = new Date(movieVm.movieData.Released);
-                    console.log(movieVm.movieData.Type)
                 }, function (error) {
                     console.log(error);
                 })
         }
 
         function deleteMovie() {
-            console.log("deleteMovie");
-
             movieDeleteService.deleteMovie(movieVm.movieId)
                 .then(function (data) {
-                    console.log(data);
                     window.location.href="./main-grid.html";
-
                 }, function (error) {
                     console.log(error);
                 })

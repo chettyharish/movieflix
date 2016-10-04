@@ -8,7 +8,6 @@
 
     mainController.$inject = ["mainService" ,"customCookieService"] ;
     function mainController(mainService, customCookieService) {
-        console.log("mainController");
         if(customCookieService.testLoggedIn() == false)
         {
             window.location.href="./index.html";
@@ -77,27 +76,22 @@
         }
 
         function setParams() {
-            console.log("setParams")
             var param = getUrlParams()["filterBy"].replace(/[#/]/g, "");
             if (param != null)
                 toggleFilter(param)
         }
 
         function getRange() {
-            console.log("getRange")
-            console.log(movieVm.page.numPages)
             return new Array(movieVm.page.numPages);
         }
 
 
         function nextPage() {
-            console.log("nextPage")
             if (movieVm.page.pageNumber < movieVm.page.numPages)
                 movieVm.page.pageNumber = movieVm.page.pageNumber + 1;
         }
 
         function prevPage() {
-            console.log("prevPage")
             if (movieVm.page.pageNumber > 1)
                 movieVm.page.pageNumber = movieVm.page.pageNumber - 1;
         }
@@ -113,33 +107,26 @@
 
         function toggleFilter(filter) {
             movieVm.filter.by = filter;
-            console.log("toggleFilter " + movieVm.filter.by);
             movieVm.page.numPages = movieVm.getPagesByType();
             movieVm.page.pageNumber = 1;
-            console.log(movieVm.page.numPages)
 
         }
 
         function toggleSort(sortBy) {
-            console.log("sortBy " + sortBy);
             movieVm.sorter.by = sortBy;
             movieVm.sorter.reverse = !movieVm.sorter.reverse;
         }
 
 
         function getAllMovies() {
-            console.log("getAllMovies");
 
             mainService.getAllMovies()
                 .then(function (data) {
                     movieVm.movieData = data;
-                    console.log(movieVm.movieData);
 
                     setParams();
                     movieVm.page.numPages = movieVm.getPagesByType();
-                    console.log(movieVm.page.numPages)
                 }, function (error) {
-                   
                     console.log(error);
                 })
 

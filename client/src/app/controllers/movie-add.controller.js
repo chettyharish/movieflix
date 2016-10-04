@@ -44,7 +44,6 @@
 
             };
 
-            console.log(JSON.stringify(Movie));
             movieAddService.addMovie(Movie)
                 .then(function (data) {
                     movieVm.Movie = data;

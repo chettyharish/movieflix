@@ -8,7 +8,6 @@
 
     movieService.$inject = ["$http", "$q", "CONFIG"];
     function movieService($http, $q, CONFIG) {
-        console.log("movieService");
         var self = this;
         self.getMovie = getMovie;
         self.getCommentList = getCommentList;
@@ -16,7 +15,6 @@
 
         function getMovie(movieId) {
             var url = CONFIG.API_HOST + "movies/" + movieId;
-            console.log(url);
             return $http
                 .get(url)
                 .then(function (response) {
@@ -30,7 +28,6 @@
 
         function getCommentList(movieId) {
             var url = CONFIG.API_HOST + "movies/" + movieId + "/commentList";
-            console.log(url);
             return $http
                 .get(url)
                 .then(function (response) {
@@ -43,7 +40,6 @@
 
         function addComment(movieId, movie) {
             var url = CONFIG.API_HOST + "movies/" + movieId;
-            console.log(url);
 
             return $http
                 .put(url, JSON.stringify(movie))

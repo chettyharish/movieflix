@@ -8,7 +8,6 @@
 
     userEditController.$inject = ["userEditService", "customCookieService"];
     function userEditController(userEditService, customCookieService) {
-        console.log("userEditController");
         if (customCookieService.testLoggedIn() == false) {
             window.location.href = "./index.html";
             window.alert("User not logged in");
@@ -31,7 +30,6 @@
         }
 
         function getUser() {
-            console.log("getUser");
 
             userEditService.getUser(userId)
                 .then(function (data) {
@@ -50,16 +48,13 @@
                         userVm.user.state = tempData.address.State;
                         userVm.user.country = tempData.address.Country;
                     }
-                    console.log(data)
                 }, function (error) {
-
                     console.log(error);
                 })
         }
 
 
         function editUser() {
-            console.log("editUser Controller");
 
             tempData.FirstName = userVm.user.firstName;
             tempData.LastName = userVm.user.lastName;
@@ -79,14 +74,11 @@
             tempData.address.Country = userVm.user.country;
 
 
-            console.log("editUser");
 
             userEditService.editUser(userId, tempData)
                 .then(function (data) {
-                    console.log(data);
                     window.location.href = "./user-account.html";
                 }, function (error) {
-
                     console.log(error);
                 })
 

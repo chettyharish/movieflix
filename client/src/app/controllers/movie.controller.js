@@ -8,7 +8,6 @@
 
     movieController.$inject = ["movieService", "customCookieService"];
     function movieController(movieService, customCookieService) {
-        console.log("movieController");
 
         if (customCookieService.testLoggedIn() == false) {
             window.location.href = "./index.html";
@@ -25,12 +24,10 @@
         movieVm.userRating = {};
 
         var movieId = (getUrlParams()["movieId"]).replace(/[#/]/g, "");
-        console.log(movieId)
 
 
         getMovie();
         testAccess();
-        console.log(movieVm.allowedAccess)
 
         function getUrlParams() {
             var param = {};
@@ -43,7 +40,6 @@
         }
 
         function testAccess() {
-            console.log("temp")
             if (customCookieService.testAccess() === true) {
                 movieVm.allowedAccess = true;
                 return;
@@ -52,7 +48,6 @@
         }
 
         function setMovieRating(commentList) {
-            console.log(commentList);
             if (commentList == null)
                 movieVm.userRating.rating = 0;
             var sum = 0;
@@ -66,14 +61,11 @@
         }
 
         function getMovie() {
-            console.log("getMovie");
 
             movieService.getMovie(movieId)
                 .then(function (data) {
                     movieVm.movieData = data;
-                    console.log(movieVm.movieData)
                 }, function (error) {
-
                     console.log(error);
                 })
 
@@ -82,14 +74,11 @@
                     movieVm.movieData.commentList = data;
                     movieVm.setMovieRating(movieVm.movieData.commentList);
                 }, function (error) {
-
                     console.log(error);
                 })
         }
 
         function addComment() {
-            console.log("addComment");
-            console.log(movieVm.comment.star);
             var comment = {
                 "Text": movieVm.comment.comment,
                 "Rating": movieVm.comment.star,
@@ -101,12 +90,10 @@
                 movieVm.movieData.commentList = new Object();
             movieVm.movieData.commentList.push(comment);
 
-            console.log(comment);
             movieService.addComment(movieId, movieVm.movieData)
                 .then(function (data) {
                     comment = data;
                 }, function (error) {
-
                     console.log(error);
                 })
 

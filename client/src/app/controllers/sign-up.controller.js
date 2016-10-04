@@ -8,15 +8,11 @@
 
     signUpController.$inject = ["signUpService"];
     function signUpController(signUpService) {
-        console.log("signUpController");
-
-
         var signUpVm = this;
         signUpVm.createUser = createUser;
 
 
         function createUser() {
-            console.log("createUser");
 
             var authenticatorUser = {
                 "UserName": signUpVm.newUser.userName,
@@ -32,13 +28,11 @@
                 "BirthDate": signUpVm.newUser.birthDate
             };
 
-            console.log(JSON.stringify(baseUserInfo));
 
             signUpService.addBaseUserInformation(baseUserInfo)
                 .then(function (data) {
                     signUpVm.baseUserInfo = data;
                     authenticatorUser.UserID = signUpVm.baseUserInfo.userId;
-                    console.log(JSON.stringify(authenticatorUser));
 
                     signUpService.addUserAuthenticator(authenticatorUser)
                         .then(function (data) {
@@ -48,7 +42,6 @@
                             window.alert("UserName and Email already in use")
                             console.log(error);
                         })
-                    console.log(signUpVm.baseUserInfo);
                 }, function (error) {
                     console.log(error);
                 });

@@ -8,7 +8,6 @@
 
     movieAddService.$inject = ["$http", "$q", "CONFIG"];
     function movieAddService($http, $q, CONFIG) {
-        console.log("movieAddService");
         var self = this;
         self.addMovie = addMovie;
 

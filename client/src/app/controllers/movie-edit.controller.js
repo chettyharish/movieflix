@@ -8,7 +8,6 @@
 
     movieEditController.$inject = ["movieEditService", "customCookieService"];
     function movieEditController(movieEditService, customCookieService) {
-        console.log("movieEditController");
 
         if (customCookieService.testLoggedIn() == false) {
             window.location.href = "./index.html";
@@ -37,12 +36,10 @@
         getMovie();
 
         function getMovie() {
-            console.log("getMovie");
 
             movieEditService.getMovie(movieVm.movieId)
                 .then(function (data) {
                     movieVm.movieData = data;
-                    console.log(movieVm.movieData)
 
                     movieVm.editMovie.movieName = movieVm.movieData.Title
                     movieVm.editMovie.releaseDate = new Date(movieVm.movieData.Released);
@@ -64,13 +61,11 @@
                     movieVm.editMovie.plot = movieVm.movieData.Plot;
 
                 }, function (error) {
-
                     console.log(error);
                 })
         }
 
         function modifyMovie() {
-            console.log("modifyMovie");
             movieVm.movieData.Title = movieVm.editMovie.movieName;
             movieVm.movieData.Released = movieVm.editMovie.releaseDate;
             movieVm.movieData.Rated = movieVm.editMovie.rating;

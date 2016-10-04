@@ -23,12 +23,11 @@
     <!--endinject-->
 
 
-
 </head>
 
 <body class="signup-body">
 
-<div class="signup-wrapper"  ng-controller="signUpController as signUpVm">
+<div class="signup-wrapper" ng-controller="signUpController as signUpVm">
     <div class="container-fluid">
 
         <div class="row">
@@ -75,10 +74,10 @@
                             <h5><label for="inputPassword">PASSWORD</label></h5>
                             <div class="signUpInput">
                                 <input ng-model="signUpVm.newUser.password" type="password" id="inputPassword" name="inputPassword" class="form-control input-lg" placeholder="Password" required minlength="6">
-                                <div class="error" ng-if="signUpForm.inputPassword.$dirty" ng-messages="signUpForm.inputPassword.$error" passMatch="{{signUpVm.newUser.password}} == {{signUpVm.newUser.password2}}">
+                                <div class="error" ng-if="signUpForm.inputPassword.$dirty" ng-messages="signUpForm.inputPassword.$error">
                                     <div ng-message="required">Please enter a password</div>
                                     <div ng-message="minlength">Password must be longer than 5 characters</div>
-                                    <div ng-message="passMatch">Does not match Password2</div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -90,8 +89,6 @@
                                 <div class="error" ng-if="signUpForm.inputPassword2.$dirty" ng-messages="signUpForm.inputPassword2.$error">
                                     <div ng-message="required">Please enter a password</div>
                                     <div ng-message="minlength">Password must be longer than 5 characters</div>
-                                    <div ng-message-exp="{{signUpVm.newUser.password}} == {{signUpVm.newUser.password2}}">Does not match Password1</div>
-
                                 </div>
                             </div>
                         </div>
@@ -107,7 +104,9 @@
                         </div>
 
 
-                        <button type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-lg btn-primary btn-block">Sign Up</button>
+                        <button type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-lg btn-primary btn-block">
+                            Sign Up
+                        </button>
                         <h5><a href="#">Already a Member?</a></h5>
 
                     </form>
@@ -154,8 +153,6 @@
 <script src="..\bower_components\angular-route\angular-route.js"></script>
 <script src="..\bower_components\angular-bootstrap\ui-bootstrap-tpls.js"></script>
 <script src="..\bower_components\angular-cookies\angular-cookies.js"></script>
-
-
 
 
 <!--bower:js-->

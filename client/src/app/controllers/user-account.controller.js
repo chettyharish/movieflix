@@ -8,7 +8,6 @@
 
     userAccountController.$inject = ["userAccountService", "customCookieService"];
     function userAccountController(userAccountService, customCookieService) {
-        console.log("userAccountController");
 
         if (customCookieService.testLoggedIn() == false) {
             window.location.href = "./index.html";
@@ -32,12 +31,10 @@
 
 
         function getUser() {
-            console.log("getUser");
 
             userAccountService.getUser(userId)
                 .then(function (data) {
                     tempData = data;
-                    console.log(tempData);
 
                     userVm.user.userName = tempData.UserName;
                     userVm.user.email = tempData.EmailAddress;
@@ -80,7 +77,6 @@
                     }
 
                 }, function (error) {
-
                     console.log(error);
                 })
         }

@@ -8,7 +8,6 @@
 
     userPaymentController.$inject = ["userPaymentService", "customCookieService"];
     function userPaymentController(userPaymentService, customCookieService) {
-        console.log("userPaymentController");
 
         if(customCookieService.testLoggedIn() == false)
         {
@@ -42,12 +41,10 @@
 
 
         function getUserPayment() {
-            console.log("getUserPayment");
 
             userPaymentService.getUserPayment(userId)
                 .then(function (data) {
                     tempData = data;
-                    console.log(tempData);
 
                     if (tempData.payment != null) {
                         if (tempData.payment.address != null) {
@@ -71,14 +68,12 @@
                     }
                     userVm.user.contactNumber = tempData.PhoneNumber;
                 }, function (error) {
-                   
                     console.log(error);
                 })
         }
 
 
         function editUserPayment() {
-            console.log("editUserPayment Controller");
 
             if (tempData.payment == null)
                 tempData.payment = new Object();
@@ -101,15 +96,10 @@
             tempData.payment.CCCVV = userVm.user.ccCVV;
 
 
-            console.log("editUserPayment");
-            console.log(tempData);
-
             userPaymentService.editUserPayment(userId, tempData)
                 .then(function (data) {
-                    console.log(data);
                     window.location.href = "./user-account.html";
                 }, function (error) {
-                   
                     console.log(error);
                 })
 
