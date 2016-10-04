@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <title>MovieFlix - Edit Information</title>
+</head>
+
+<body class="membership-edit-body">
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="images/logo.png" class="img-responsive" /></a>
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav ">
+          <li><a href="#"><h5>Home</h5></a></li>
+          <li><a href="#"><h5>Movies</h5></a></li>
+          <li><a href="#"><h5>TV Series</h5></a></li>
+        </ul>
+
+
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <form class="nav navbar-form navbar-right search-bar">
+              <div class="form-group">
+                <input type="text" class="form-control search-bar-text" placeholder="Search" />
+                <button type="submit" class="btn btn-danger search-bar-icon"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </form>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <h5>My Account</h5><span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Billing</a></li>
+              <li><a href="#">Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="membership-edit-wrapper">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="membership-edit-wrapper-text">
+          <h1>Update Your Information</h1>
+               </div>
+      </div>
+
+      <div class="row">
+          <div class="form-membership-edit">
+            <form class="membership-edit-form">
+              <h2 class="membership-edit-heading">Billing Information</h2>
+
+              <div class="membership-edit-group">
+                <label for="addressOne" class="membership-edit-label">	ADDRESS ONE </label>
+                <div class="membership-edit">
+                  <input type="text" id="addressOne" class="form-control input-lg" placeholder="Address One" required autofocus>
+                </div>
+              </div>
+
+
+              <div class="membership-edit-group">
+                <label for="addressTwo-two" class="membership-edit-label">	ADDRESS TWO </label>
+                <div class="membership-edit">
+                  <input type="text" id="addressTwo" class="form-control input-lg" placeholder="Address Two" required>
+                </div>
+              </div>
+
+              <div class="membership-edit-group">
+                <label for="contactNumber" class="membership-edit-label">	CONTACT NUMBER </label>
+                <div class="membership-edit">
+                  <input type="number" id="contactNumber" class="form-control input-lg" placeholder="Contact Number" required>
+                </div>
+              </div>
+
+              <div class="membership-edit-group">
+                <label for="zipCode" class="membership-edit-label">	ZIPCODE </label>
+                <div class="membership-edit">
+                  <input type="number" id="zipCode" class="form-control input-lg" placeholder="Zipcode" required>
+                </div>
+              </div>
+
+
+            <div class="cc-group">
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </div>
+
+
+          </form>
+        </div>
+
+    </div>
+    <!-- container-fluid -->
+  </div>
+  <!-- wrapper -->
+
+
+
+
+  <footer class="footer navbar-static-bottom">
+    <h5>Questions? Call 0-000-000-000</h5>
+    <div>
+      <ul class="list-inline ">
+        <li><a href="# "><h5>Pricing</h5></a></li>
+        <li><a href="# "><h5>Contact</h5></a></li>
+        <li><a href="# "><h5>Terms</h5></a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+
+</html>

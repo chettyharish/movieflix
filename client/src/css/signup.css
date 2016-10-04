@@ -1,0 +1,13 @@
+/*SIGNUP*/
+
+.signup-body {
+    background-color: #f3f3f3;
+    background: url(../images/breaking-bad.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.signUpForm {
+    background-color: #f3f3f3;
+    padding: 15px;
+    margin: 0 auto 4% auto;
+}

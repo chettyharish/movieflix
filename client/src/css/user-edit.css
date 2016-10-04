@@ -1,0 +1,19 @@
+.user-edit-body {
+     background-color: #f3f3f3;
+ }
+
+.user-edit-wrapper {
+    width: 100%;
+    background-color: #f3f3f3;
+}
+
+.userEditForm {
+    background-color: white;
+    padding: 2%;
+    margin: 10% auto 10% auto;
+    clear: both;
+}
+
+.userEditForm .user-edit-heading {
+    text-align: center;
+}

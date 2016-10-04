@@ -1,0 +1,15 @@
+/*NAVBAR*/
+
+.navbar {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.navbar h5 {
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+}
+
+.navbar .img-responsive {
+    max-width: 100px;
+}

@@ -1,0 +1,20 @@
+/*FOOTER*/
+
+.footer {
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    width: 100%;
+    max-height: 100px;
+}
+
+.footer h5 {
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+}
+
+.logo {
+    clear: both;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}

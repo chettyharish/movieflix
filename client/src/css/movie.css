@@ -1,0 +1,40 @@
+
+.movie-add-body,
+.movie-edit-body,
+.movie-delete-body {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: #f3f3f3;
+}
+
+.movie-add-wrapper,
+.movie-edit-wrapper,
+.movie-delete-wrapper {
+    margin: 6% auto 4% auto;
+}
+
+.movie-add-heading,
+.movie-edit-heading,
+.movie-delete-heading {
+    background-color: white;
+    text-align: center;
+}
+
+.form-movie-add,
+.form-movie-edit,
+.form-movie-delete{
+    background-color: white;
+}
+
+.movieAddForm .form-group,
+.movieEditForm .form-group,
+.movieDeleteForm .form-group {
+    margin: 0 auto 2% auto;
+}
+
+.form-movie-add-two .btn,
+.form-movie-edit-two .btn,
+.form-movie-delete-two .btn {
+    margin: 4% auto 0 auto;
+}
+

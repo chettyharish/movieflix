@@ -1,0 +1,49 @@
+/*PAYMENT*/
+
+.payment-body {
+    background-color: #f3f3f3;
+}
+
+.payment-wrapper {
+    margin: 4% auto 0 auto;
+    width: 100%;
+}
+
+.payment-wrapper .payment-wrapper-text h1,
+.payment-wrapper .payment-wrapper-text h4 {
+    text-align: center;
+}
+
+.paymentForm {
+    background-color: white;
+    max-width: 600px;
+    padding: 2%;
+    margin: 2% auto 0 auto;
+}
+
+.form-payment-cc {
+    clear: both;
+    background-color: white;
+    max-width: 600px;
+    padding: 15px;
+    margin: 0 auto 4% auto;
+}
+
+.form-payment-cc .cc-group .card-cvv {
+    margin-bottom: 50px;
+}
+
+.payment-wrapper .separator {
+    background-color: black;
+    min-height: 3px;
+    max-width: 600px;
+    margin: 0 auto 0 auto;
+}
+
+.paymentForm .payment {
+    margin: 0 auto 2% auto;
+}
+
+.form-payment-cc .payment {
+    margin: 0 auto 2% auto;
+}

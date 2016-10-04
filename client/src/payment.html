@@ -1,0 +1,330 @@
+<!DOCTYPE html >
+<html ng-app="movie">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>MovieFlix - Payment</title>
+    <!--bower:css-->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <!--endinject-->
+
+    <!--inject:css-->
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main-grid.css">
+    <link rel="stylesheet" href="css/movie-page.css">
+    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/user-account.css">
+    <link rel="stylesheet" href="css/user-edit.css">
+    <!--endinject-->
+
+</head>
+
+<body class="payment-body">
+
+<div ng-include="'./templates/navbar.tmpl.html'"></div>
+
+<div class="payment-wrapper">
+
+    <div class="container-fluid" ng-controller="userPaymentController as userVm">
+
+        <div class="row">
+            <div class="payment-wrapper-text">
+                <h1>Update Your Payment Information</h1>
+                <h4> Your new payment method will be applied to your next billing cycle. </h4>
+                <h4> Your monthly membership is billed on the first day of each billing period.</h4>
+            </div>
+        </div>
+
+        <div class="form-payment">
+            <form class="paymentForm" ng-submit="paymentForm.$valid && userVm.editUserPayment()" name="paymentForm" id="paymentForm" novalidate>
+                <h2 class="payment-heading">Billing Information</h2>
+
+                <div class="form-group">
+                    <label for="addressOne" class="payment-label"> ADDRESS ONE </label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.addressOne" type="text" id="addressOne" name="addressOne" class="form-control input-lg" placeholder="Address One" required>
+                        <div class="error" ng-if="paymentForm.addressOne.$dirty" ng-messages="paymentForm.addressOne.$error">
+                            <div ng-message="required">Please enter a valid address</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="addressTwo" class="payment-label"> ADDRESS TWO </label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.addressTwo" type="text" id="addressTwo" name="addressTwo" class="form-control input-lg" placeholder="Address Two">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactNumber" class="payment-label"> CONTACT NUMBER </label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.contactNumber" type="text" id="contactNumber" name="contactNumber" class="form-control input-lg" placeholder="Phone Number">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="zipCode" class="payment-label"> ZIPCODE </label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.zipCode" type="text" id="zipCode" name="zipCode" class="form-control input-lg" placeholder="Zip Code" required>
+                        <div class="error" ng-if="paymentForm.zipCode.$dirty" ng-messages="paymentForm.zipCode.$error">
+                            <div ng-message="required">Please enter a valid Zip Code</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="city" class="payment-label"> CITY </label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.city" type="text" id="city" name="city" class="form-control input-lg" placeholder="City" required>
+                        <div class="error" ng-if="paymentForm.city.$dirty" ng-messages="paymentForm.city.$error">
+                            <div ng-message="required">Please enter a city</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="state" class="user-edit-label"> STATE </label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.state" type="text" id="state" name="state" class="form-control input-lg" placeholder="State" required>
+                        <div class="error" ng-if="paymentForm.state.$dirty" ng-messages="paymentForm.state.$error">
+                            <div ng-message="required">Please enter a state</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="country" class="payment-label"> COUNTRY </label>
+                    <div class="payment">
+                        <select ng-model="userVm.user.country" name="type" id="country" name="country" class="form-control input-lg" required>
+                            <option value=""></option>
+                            <option value="AR">Argentina</option>
+                            <option value="AU">Australia</option>
+                            <option value="AT">Austria</option>
+                            <option value="BY">Belarus</option>
+                            <option value="BE">Belgium</option>
+                            <option value="BA">Bosnia and Herzegovina</option>
+                            <option value="BR">Brazil</option>
+                            <option value="BG">Bulgaria</option>
+                            <option value="CA">Canada</option>
+                            <option value="CL">Chile</option>
+                            <option value="CN">China</option>
+                            <option value="CO">Colombia</option>
+                            <option value="CR">Costa Rica</option>
+                            <option value="HR">Croatia</option>
+                            <option value="CU">Cuba</option>
+                            <option value="CY">Cyprus</option>
+                            <option value="CZ">Czech Republic</option>
+                            <option value="DK">Denmark</option>
+                            <option value="DO">Dominican Republic</option>
+                            <option value="EG">Egypt</option>
+                            <option value="EE">Estonia</option>
+                            <option value="FI">Finland</option>
+                            <option value="FR">France</option>
+                            <option value="GE">Georgia</option>
+                            <option value="DE">Germany</option>
+                            <option value="GI">Gibraltar</option>
+                            <option value="GR">Greece</option>
+                            <option value="HK">Hong Kong S.A.R., China</option>
+                            <option value="HU">Hungary</option>
+                            <option value="IS">Iceland</option>
+                            <option value="IN">India</option>
+                            <option value="ID">Indonesia</option>
+                            <option value="IR">Iran</option>
+                            <option value="IQ">Iraq</option>
+                            <option value="IE">Ireland</option>
+                            <option value="IL">Israel</option>
+                            <option value="IT">Italy</option>
+                            <option value="JM">Jamaica</option>
+                            <option value="JP">Japan</option>
+                            <option value="KZ">Kazakhstan</option>
+                            <option value="KW">Kuwait</option>
+                            <option value="KG">Kyrgyzstan</option>
+                            <option value="LA">Laos</option>
+                            <option value="LV">Latvia</option>
+                            <option value="LB">Lebanon</option>
+                            <option value="LT">Lithuania</option>
+                            <option value="LU">Luxembourg</option>
+                            <option value="MK">Macedonia</option>
+                            <option value="MY">Malaysia</option>
+                            <option value="MT">Malta</option>
+                            <option value="MX">Mexico</option>
+                            <option value="MD">Moldova</option>
+                            <option value="MC">Monaco</option>
+                            <option value="ME">Montenegro</option>
+                            <option value="MA">Morocco</option>
+                            <option value="NL">Netherlands</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="NI">Nicaragua</option>
+                            <option value="KP">North Korea</option>
+                            <option value="NO">Norway</option>
+                            <option value="PK">Pakistan</option>
+                            <option value="PS">Palestinian Territory</option>
+                            <option value="PE">Peru</option>
+                            <option value="PH">Philippines</option>
+                            <option value="PL">Poland</option>
+                            <option value="PT">Portugal</option>
+                            <option value="PR">Puerto Rico</option>
+                            <option value="QA">Qatar</option>
+                            <option value="RO">Romania</option>
+                            <option value="RU">Russia</option>
+                            <option value="SA">Saudi Arabia</option>
+                            <option value="RS">Serbia</option>
+                            <option value="SG">Singapore</option>
+                            <option value="SK">Slovakia</option>
+                            <option value="SI">Slovenia</option>
+                            <option value="ZA">South Africa</option>
+                            <option value="KR">South Korea</option>
+                            <option value="ES">Spain</option>
+                            <option value="LK">Sri Lanka</option>
+                            <option value="SE">Sweden</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="TW">Taiwan</option>
+                            <option value="TH">Thailand</option>
+                            <option value="TN">Tunisia</option>
+                            <option value="TR">Turkey</option>
+                            <option value="UA">Ukraine</option>
+                            <option value="AE">United Arab Emirates</option>
+                            <option value="GB">United Kingdom</option>
+                            <option value="US">USA</option>
+                            <option value="UZ">Uzbekistan</option>
+                            <option value="VN">Vietnam</option>
+                        </select>
+                        <div class="error" ng-if="paymentForm.country.$dirty" ng-messages="paymentForm.country.$error">
+                            <div ng-message="required">Please enter a country</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="separator"></div>
+
+                <h2 class="cc-heading">Payment Details</h2>
+
+                <div class="form-group">
+                    <div class="payment">
+                        <img class="img-responsive" src="images/payment.png">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="ccNumber" class="payment-label">CREDIT CARD NUMBER </label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.ccNumber" type="text" id="ccNumber" name="ccNumber" class="form-control input-lg" placeholder="Credit Card number " required minlength="16" maxlength="16">
+                        <div class="error" ng-if="paymentForm.ccNumber.$dirty" ng-messages="paymentForm.ccNumber.$error">
+                            <div ng-message="required">Please enter a Credit Card Number</div>
+                            <div ng-message="required">Please enter a 16-digit Credit Card Number</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ccName" class="payment-label">NAME </label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.ccName" type="text" id="ccName" name="ccName" class="form-control input-lg" placeholder="Name on the credit card" required>
+                        <div class="error" ng-if="paymentForm.ccName.$dirty" ng-messages="paymentForm.ccName.$error">
+                            <div ng-message="required">Please enter the Name on the Credit Card</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-7 col-md-7">
+                    <label for="ccExpiryDate" class="payment-label">EXPIRATION DATE</label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.ccExpiryDate" type="text" id="ccExpiryDate" name="ccExpiryDate" class="form-control input-lg" placeholder="MM / YYYY" required minlength="7" maxlength="7"/>
+                        <div class="error" ng-if="paymentForm.ccExpiryDate.$dirty" ng-messages="paymentForm.ccExpiryDate.$error">
+                            <div ng-message="required">Please enter Credit Card Expiry Date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-5 col-md-5 pull-right">
+                    <label for="ccCVV" class="payment-label">CVV</label>
+                    <div class="payment">
+                        <input ng-model="userVm.user.ccCVV" id="ccCVV" name="ccCVV" type="number" class="card-cvv form-control  input-lg" placeholder="CVV" required minlength="3" maxlength="3"/>
+                        <div class="error" ng-if="paymentForm.ccCVV.$dirty" ng-messages="paymentForm.ccCVV.$error">
+                            <div ng-message="required">Please enter CVV Number</div>
+                            <div ng-message="required">Please enter a 3 digit CVV Number</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block" ng-disabled="paymentForm.$invalid" type="submit">
+                        Confirm Payment
+                    </button>
+                </div>
+
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<footer class="footer navbar-static-bottom">
+    <h5>Questions? Call 0-000-000-000</h5>
+    <div>
+        <ul class="list-inline ">
+            <li><a href="# "><h5>Pricing</h5></a></li>
+            <li><a href="# "><h5>Contact</h5></a></li>
+            <li><a href="# "><h5>Terms</h5></a></li>
+        </ul>
+    </div>
+</footer>
+
+
+
+
+<!--bower:js-->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<!--endinject-->
+
+
+<!--inject:js-->
+<script src="movie.js"></script>
+<script src="app/services/user-edit.service.js"></script>
+<script src="app/services/user-account.service.js"></script>
+<script src="app/services/sign-up.service.js"></script>
+<script src="app/services/payment.service.js"></script>
+<script src="app/services/movie.service.js"></script>
+<script src="app/services/movie-edit.service.js"></script>
+<script src="app/services/movie-delete.service.js"></script>
+<script src="app/services/movie-add.service.js"></script>
+<script src="app/services/main-grid.service.js"></script>
+<script src="app/services/login.service.js"></script>
+<script src="app/services/custom-cookie.service.js"></script>
+<script src="app/directives/navbar.directive.js"></script>
+<script src="app/controllers/user-edit.controller.js"></script>
+<script src="app/controllers/user-account.controller.js"></script>
+<script src="app/controllers/sign-up.controller.js"></script>
+<script src="app/controllers/payment.controller.js"></script>
+<script src="app/controllers/navbar.controller.js"></script>
+<script src="app/controllers/movie.controller.js"></script>
+<script src="app/controllers/movie-edit.controller.js"></script>
+<script src="app/controllers/movie-delete.controller.js"></script>
+<script src="app/controllers/movie-add.controller.js"></script>
+<script src="app/controllers/main-grid.controller.js"></script>
+<script src="app/controllers/login.controller.js"></script>
+<script src="app/configuration/module.config.js"></script>
+<script src="js/ui-bootstrap-tpls-2.1.4.min.js"></script>
+<script src="movie.constant.js"></script>
+<!--endinject-->
+
+
+</body>
+
+</html>

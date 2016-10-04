@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html ng-app="movie">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/user-edit.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <title>MovieFlix - Edit your Profile</title>
+
+</head>
+
+<body class="user-edit-body">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="images/logo.png" class="img-responsive"/></a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ">
+                <li><a href="#"><h5>Home</h5></a></li>
+                <li><a href="#"><h5>Movies</h5></a></li>
+                <li><a href="#"><h5>TV Series</h5></a></li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="nav navbar-form navbar-right search-bar">
+                        <div class="form-group">
+                            <input type="text" class="form-control search-bar-text" placeholder="Search"/>
+                            <button type="submit" class="btn btn-danger search-bar-icon">
+                                <span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </form>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <h5>My Account</h5><span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Billing</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="user-edit-wrapper" ng-controller="userEditController as userVm">
+    <div class="container-fluid col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+        <div class="row">
+
+            <div class="user-edit-form">
+                <form ng-submit="userVm.editUser()" class="userEditForm" novalidate>
+                    <h2 class="user-edit-heading">Personal Details</h2>
+
+
+                    <div class="form-group">
+                        <h5><label for="name" class="user-edit-label">FIRST NAME</label></h5>
+                        <div class="signup">
+                            <input ng-model="userVm.user.firstName" type="text" id="firstName" firstName="name" class="form-control input-lg" placeholder="First Name" required autofocus minlength="4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h5><label for="name" class="user-edit-label">LAST NAME</label></h5>
+                        <div class="signup">
+                            <input ng-model="userVm.user.lastName" type="text" id="lastName" name="lastName" class="form-control input-lg" placeholder="Last Name" required autofocus minlength="4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h5><label for="birthDate">BIRTHDATE</label></h5>
+                        <div class="user-edit">
+                            <input ng-model="userVm.user.birthDate" id="birthDate" name="birthDate" type="date" class="form-control input-lg" placeholder="MM / DD / YYYY" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h5><label for="genderType" class="user-edit-label">GENDER</label></h5>
+                        <div class="user-edit">
+                            <select ng-model="userVm.user.genderType" name="type" id="genderType" name="genderType" class="form-control input-lg">
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option value="O">Other</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addressOne" class="user-edit-label"> ADDRESS ONE </label>
+                        <div class="user-edit">
+                            <input ng-model="userVm.user.addressOne" type="text" id="addressOne" name="addressOne" class="form-control input-lg" placeholder="Address One">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="addressTwo" class="user-edit-label"> ADDRESS TWO </label>
+                        <div class="user-edit">
+                            <input ng-model="userVm.user.addressTwo" type="text" id="addressTwo" name="addressTwo" class="form-control input-lg" placeholder="Address Two">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactNumber" class="user-edit-label"> CONTACT NUMBER </label>
+                        <div class="user-edit">
+                            <input ng-model="userVm.user.contactNumber" type="text" id="contactNumber" name="contactNumber" class="form-control input-lg" placeholder="Phone Number">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipCode" class="user-edit-label"> ZIPCODE </label>
+                        <div class="user-edit">
+                            <input ng-model="userVm.user.zipCode" type="text" id="zipCode" name="zipCode" class="form-control input-lg" placeholder="Zip Code">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city" class="user-edit-label"> CITY </label>
+                        <div class="user-edit">
+                            <input ng-model="userVm.user.city" type="text" id="city" name="city" class="form-control input-lg" placeholder="City">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state" class="user-edit-label"> STATE </label>
+                        <div class="user-edit">
+                            <input ng-model="userVm.user.state" type="text" id="state" name="state" class="form-control input-lg" placeholder="State">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country" class="user-edit-label"> COUNTRY </label>
+                        <div class="user-edit">
+                            <select ng-model="userVm.user.country" name="type" id="country" name="country" class="form-control input-lg">
+                                <option value=""></option>
+                                <option value="AR">Argentina</option>
+                                <option value="AU">Australia</option>
+                                <option value="AT">Austria</option>
+                                <option value="BY">Belarus</option>
+                                <option value="BE">Belgium</option>
+                                <option value="BA">Bosnia and Herzegovina</option>
+                                <option value="BR">Brazil</option>
+                                <option value="BG">Bulgaria</option>
+                                <option value="CA">Canada</option>
+                                <option value="CL">Chile</option>
+                                <option value="CN">China</option>
+                                <option value="CO">Colombia</option>
+                                <option value="CR">Costa Rica</option>
+                                <option value="HR">Croatia</option>
+                                <option value="CU">Cuba</option>
+                                <option value="CY">Cyprus</option>
+                                <option value="CZ">Czech Republic</option>
+                                <option value="DK">Denmark</option>
+                                <option value="DO">Dominican Republic</option>
+                                <option value="EG">Egypt</option>
+                                <option value="EE">Estonia</option>
+                                <option value="FI">Finland</option>
+                                <option value="FR">France</option>
+                                <option value="GE">Georgia</option>
+                                <option value="DE">Germany</option>
+                                <option value="GI">Gibraltar</option>
+                                <option value="GR">Greece</option>
+                                <option value="HK">Hong Kong S.A.R., China</option>
+                                <option value="HU">Hungary</option>
+                                <option value="IS">Iceland</option>
+                                <option value="IN">India</option>
+                                <option value="ID">Indonesia</option>
+                                <option value="IR">Iran</option>
+                                <option value="IQ">Iraq</option>
+                                <option value="IE">Ireland</option>
+                                <option value="IL">Israel</option>
+                                <option value="IT">Italy</option>
+                                <option value="JM">Jamaica</option>
+                                <option value="JP">Japan</option>
+                                <option value="KZ">Kazakhstan</option>
+                                <option value="KW">Kuwait</option>
+                                <option value="KG">Kyrgyzstan</option>
+                                <option value="LA">Laos</option>
+                                <option value="LV">Latvia</option>
+                                <option value="LB">Lebanon</option>
+                                <option value="LT">Lithuania</option>
+                                <option value="LU">Luxembourg</option>
+                                <option value="MK">Macedonia</option>
+                                <option value="MY">Malaysia</option>
+                                <option value="MT">Malta</option>
+                                <option value="MX">Mexico</option>
+                                <option value="MD">Moldova</option>
+                                <option value="MC">Monaco</option>
+                                <option value="ME">Montenegro</option>
+                                <option value="MA">Morocco</option>
+                                <option value="NL">Netherlands</option>
+                                <option value="NZ">New Zealand</option>
+                                <option value="NI">Nicaragua</option>
+                                <option value="KP">North Korea</option>
+                                <option value="NO">Norway</option>
+                                <option value="PK">Pakistan</option>
+                                <option value="PS">Palestinian Territory</option>
+                                <option value="PE">Peru</option>
+                                <option value="PH">Philippines</option>
+                                <option value="PL">Poland</option>
+                                <option value="PT">Portugal</option>
+                                <option value="PR">Puerto Rico</option>
+                                <option value="QA">Qatar</option>
+                                <option value="RO">Romania</option>
+                                <option value="RU">Russia</option>
+                                <option value="SA">Saudi Arabia</option>
+                                <option value="RS">Serbia</option>
+                                <option value="SG">Singapore</option>
+                                <option value="SK">Slovakia</option>
+                                <option value="SI">Slovenia</option>
+                                <option value="ZA">South Africa</option>
+                                <option value="KR">South Korea</option>
+                                <option value="ES">Spain</option>
+                                <option value="LK">Sri Lanka</option>
+                                <option value="SE">Sweden</option>
+                                <option value="CH">Switzerland</option>
+                                <option value="TW">Taiwan</option>
+                                <option value="TH">Thailand</option>
+                                <option value="TN">Tunisia</option>
+                                <option value="TR">Turkey</option>
+                                <option value="UA">Ukraine</option>
+                                <option value="AE">United Arab Emirates</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="US">USA</option>
+                                <option value="UZ">Uzbekistan</option>
+                                <option value="VN">Vietnam</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.angularjs.org/1.5.8/angular.js"></script>
+<script src="https://code.angularjs.org/1.5.8/angular-messages.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+<script src="movie.js"></script>
+<script src="controllers\user-edit.controller.js"></script>
+<script src="services\user-edit.service.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html >
+<html ng-app = "movie">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <title>MovieFlix - account</title>
+
+</head>
+
+<body class="account-body">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="images/logo.png" class="img-responsive"/></a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ">
+                <li><a href="#"><h5>Home</h5></a></li>
+                <li><a href="#"><h5>Movies</h5></a></li>
+                <li><a href="#"><h5>TV Series</h5></a></li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="nav navbar-form navbar-right search-bar">
+                        <div class="form-group">
+                            <input type="text" class="form-control search-bar-text" placeholder="Search"/>
+                            <button type="submit" class="btn btn-danger search-bar-icon">
+                                <span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </form>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <h5>My Account</h5><span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Billing</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="account-wrapper" ng-controller="userAccountController as userVm">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="user-account-wrapper col-xs-12 col-md-10 col-md-offset-1">
+                <div class="row">
+                    <div class="user-account-details col-xs-6 col-xs-offset-3 col-md-12 col-md-offset-1">
+                        <h1> My Account</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="separator col-xs-12 col-md-12 col-md-offset-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="user-account-details col-xs-12 col-md-12 col-md-offset-1">
+                        <div class="account-sub-detail col-xs-12 col-md-12 ">
+
+                            <div class="account-sub-detail-title  col-xs-6 col-xs-offset-3 col-md-3 col-md-offset-0">
+                                <h2>MEMBERSHIP </h2>
+                            </div>
+
+                            <div class="account-sub-detail-info col-xs-8 col-md-6">
+                                <h3><b>Username :</b> {{userVm.user.userName}} </h3>
+                                <h3><b>Email Address :</b> {{userVm.user.email}}</h3>
+                                <h3><b>Phone :</b> {{userVm.user.contactNumber}} </h3>
+                                <h3><b>Password :</b> ******* </h3>
+                            </div>
+
+                            <div class="account-sub-detail-change col-xs-4 col-md-3">
+                                <a href="#"><h3>Change </h3></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="separator col-xs-12 col-md-12 col-md-offset-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="user-account-details col-xs-12 col-md-12 col-md-offset-1">
+                        <div class="account-sub-detail col-xs-12 col-md-12 ">
+
+                            <div class="account-sub-detail-title col-xs-6 col-xs-offset-3 col-md-3 col-md-offset-0">
+                                <h2>PLAN </h2>
+                            </div>
+
+                            <div class="account-sub-detail-info col-xs-8 col-md-6">
+                                <h3><b>Current Plan :</b> 2 Screens +HD </h3>
+                                <h3><b>Current Plan :</b> 2 Screens +HD </h3>
+                            </div>
+
+                            <div class="account-sub-detail-change col-xs-4 col-md-3">
+                                <a href="#"><h3>Change Plan </h3></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="separator col-xs-12 col-md-12 col-md-offset-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="user-account-details col-xs-12 col-md-12 col-md-offset-1">
+                        <div class="account-sub-detail col-xs-12  col-md-12 ">
+
+                            <div class="account-sub-detail-title col-xs-6 col-xs-offset-3 col-md-3 col-md-offset-0">
+                                <h2>PROFILE </h2>
+                            </div>
+
+                            <div class="account-sub-detail-info col-xs-8 col-md-6">
+                                <h3><b>First Name :</b> {{userVm.user.firstName}}</h3>
+                                <h3><b>Last Name :</b> {{userVm.user.lastName}}</h3>
+                                <h3><b>Birthday :</b> {{userVm.user.birthDate}} </h3>
+                                <h3><b>Gender :</b> {{userVm.user.gender}} </h3>
+                                <h3><b>Address One :</b> {{userVm.user.addressOne }} </h3>
+                                <h3><b>Address Two :</b> {{userVm.user.addressTwo}}</h3>
+                                <h3><b>ZipCode :</b> {{userVm.user.zipCode}} </h3>
+                                <h3><b>City :</b> {{userVm.user.city}} </h3>
+                                <h3><b>State :</b> {{userVm.user.state}} </h3>
+                                <h3><b>Country : </b>{{userVm.user.country}} </h3>
+                            </div>
+
+                            <div class="account-sub-detail-change col-xs-4 col-md-3">
+                                <a href="#"><h3>Edit Info </h3></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="separator col-xs-12 col-md-12 col-md-offset-1"></div>
+                </div>
+
+                <div class="row">
+                    <div class="user-account-details col-xs-12 col-md-12 col-md-offset-1">
+                        <div class="account-sub-detail col-xs-12  col-md-12 ">
+
+                            <div class="account-sub-detail-title text-xs-center col-xs-6 col-xs-offset-3 col-md-3 col-md-offset-0 ">
+                                <h2>BILLING : </h2>
+                            </div>
+
+                            <div class="account-sub-detail-info col-xs-8 col-md-6   ">
+                                <h3><b>Name on card :</b> {{userVm.user.payment.ccName}} </h3>
+                                <h3><b>Expiration </b> {{userVm.user.payment.expiry}} </h3>
+                                <h3><b>Credit Card Number :</b> {{userVm.user.payment.ccNumber}} </h3>
+                                <h3><b>Address One :</b> {{userVm.user.payment.addressOne}} </h3>
+                                <h3><b>Address Two :</b> {{userVm.user.payment.addressTwo}} </h3>
+                                <h3><b>ZipCode :</b> {{userVm.user.payment.zipCode}} </h3>
+                                <h3><b>City :</b> {{userVm.user.payment.city }} </h3>
+                                <h3><b>City :</b> {{userVm.user.payment.state }} </h3>
+                                <h3><b>Country : </b>{{userVm.user.payment.country }} </h3>
+                            </div>
+
+                            <div class="account-sub-detail-change col-xs-4 col-md-3">
+                                <a href="#"><h3>Edit Payment </h3></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="separator col-xs-12 col-md-12 col-md-offset-1"></div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <h5>Questions? Call 0-000-000-000</h5>
+    <div>
+        <ul class="list-inline ">
+            <li><a href="# "><h5>Pricing</h5></a></li>
+            <li><a href="# "><h5>Contact</h5></a></li>
+            <li><a href="# "><h5>Terms</h5></a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<script src="https://code.angularjs.org/1.5.8/angular.js"></script>
+<script src="https://code.angularjs.org/1.5.8/angular-messages.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+<script src="movie.js"></script>
+<script src="controllers\user-account.controller.js"></script>
+<script src="services\user-account.service.js"></script>
+
+</body>
+
+</html>

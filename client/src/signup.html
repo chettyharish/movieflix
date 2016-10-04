@@ -1,0 +1,203 @@
+<!DOCTYPE html >
+<html ng-app="movie">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>MovieFlix - Signup</title>
+    <!--bower:css-->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <!--endinject-->
+
+    <!--inject:css-->
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main-grid.css">
+    <link rel="stylesheet" href="css/movie-page.css">
+    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/user-account.css">
+    <link rel="stylesheet" href="css/user-edit.css">
+    <!--endinject-->
+
+
+
+</head>
+
+<body class="signup-body">
+
+<div class="signup-wrapper"  ng-controller="signUpController as signUpVm">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="form-top col-xs-6 col-xs-offset-3 col-md-3 col-md-offset-0">
+                <div class="logo">
+                    <img src="images/logo.png" class="img-responsive"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-xs-offset-0 col-md-6 col-md-offset-3">
+                <div class="signup-form">
+
+
+                    <form ng-submit="signUpForm.$valid && signUpVm.createUser()" name="signUpForm" id="signUpForm" class="signUpForm " novalidate>
+                        <h2 class="form-signup-heading">Sign Up Now!</h2>
+
+                        <div class="form-group">
+                            <h5><label for="inputEmail">EMAIL ADDRESS</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.email" type="email" id="inputEmail" name="inputEmail" class="form-control input-lg" placeholder="Email address" autofocus required minlength="5">
+                                <div class="error" ng-if="signUpForm.inputEmail.$dirty" ng-messages="signUpForm.inputEmail.$error">
+                                    <div ng-message="required">Please enter an email address</div>
+                                    <div ng-message="email">Please enter a correct email address</div>
+                                    <div ng-message="minlength">Email must be longer than 4 characters</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h5><label for="userName">USERNAME</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.userName" type="text" id="userName" name="userName" class="form-control input-lg" placeholder="Username" required minlength="4">
+                                <div class="error" ng-if="signUpForm.userName.$dirty" ng-messages="signUpForm.userName.$error">
+                                    <div ng-message="required">Please enter a username</div>
+                                    <div ng-message="minlength">Username must be longer than 3 characters</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <h5><label for="inputPassword">PASSWORD</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.password" type="password" id="inputPassword" name="inputPassword" class="form-control input-lg" placeholder="Password" required minlength="6">
+                                <div class="error" ng-if="signUpForm.inputPassword.$dirty" ng-messages="signUpForm.inputPassword.$error" passMatch="{{signUpVm.newUser.password}} == {{signUpVm.newUser.password2}}">
+                                    <div ng-message="required">Please enter a password</div>
+                                    <div ng-message="minlength">Password must be longer than 5 characters</div>
+                                    <div ng-message="passMatch">Does not match Password2</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h5><label for="inputPassword2">PASSWORD AGAIN</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.password2" type="password" id="inputPassword2" name="inputPassword2" class="form-control input-lg" placeholder="Password Again" required minlength="6">
+                                <div class="error" ng-if="signUpForm.inputPassword2.$dirty" ng-messages="signUpForm.inputPassword2.$error">
+                                    <div ng-message="required">Please enter a password</div>
+                                    <div ng-message="minlength">Password must be longer than 5 characters</div>
+                                    <div ng-message-exp="{{signUpVm.newUser.password}} == {{signUpVm.newUser.password2}}">Does not match Password1</div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h5><label for="birthDate">BIRTHDATE</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.birthDate" type="date" class="form-control input-lg" id="birthDate" name="birthDate" placeholder="MM / DD / YYYY" required>
+                                <div class="error" ng-if="signUpForm.birthDate.$dirty" ng-messages="signUpForm.birthDate.$error">
+                                    <div ng-message="date">Please enter a birth date</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <button type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-lg btn-primary btn-block">Sign Up</button>
+                        <h5><a href="#">Already a Member?</a></h5>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <footer class="footer">
+        <h5>Questions? Call 0-000-000-000</h5>
+        <div>
+            <ul class="list-inline ">
+                <li>
+                    <a href="# ">
+                        <h5>Pricing</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="# ">
+                        <h5>Contact</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="# ">
+                        <h5>Terms</h5>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+
+</div>
+
+
+<script src="..\bower_components\angular\angular.js"></script>
+<script src="..\bower_components\jquery\dist\jquery.js"></script>
+<script src="..\bower_components\angular-messages\angular-messages.js"></script>
+<script src="..\bower_components\angular-route\angular-route.js"></script>
+<script src="..\bower_components\angular-bootstrap\ui-bootstrap-tpls.js"></script>
+<script src="..\bower_components\angular-cookies\angular-cookies.js"></script>
+
+
+
+
+<!--bower:js-->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<!--endinject-->
+
+
+<!--inject:js-->
+<script src="movie.js"></script>
+<script src="app/services/user-edit.service.js"></script>
+<script src="app/services/user-account.service.js"></script>
+<script src="app/services/sign-up.service.js"></script>
+<script src="app/services/payment.service.js"></script>
+<script src="app/services/movie.service.js"></script>
+<script src="app/services/movie-edit.service.js"></script>
+<script src="app/services/movie-delete.service.js"></script>
+<script src="app/services/movie-add.service.js"></script>
+<script src="app/services/main-grid.service.js"></script>
+<script src="app/services/login.service.js"></script>
+<script src="app/services/custom-cookie.service.js"></script>
+<script src="app/directives/navbar.directive.js"></script>
+<script src="app/controllers/user-edit.controller.js"></script>
+<script src="app/controllers/user-account.controller.js"></script>
+<script src="app/controllers/sign-up.controller.js"></script>
+<script src="app/controllers/payment.controller.js"></script>
+<script src="app/controllers/navbar.controller.js"></script>
+<script src="app/controllers/movie.controller.js"></script>
+<script src="app/controllers/movie-edit.controller.js"></script>
+<script src="app/controllers/movie-delete.controller.js"></script>
+<script src="app/controllers/movie-add.controller.js"></script>
+<script src="app/controllers/main-grid.controller.js"></script>
+<script src="app/controllers/login.controller.js"></script>
+<script src="app/configuration/module.config.js"></script>
+<script src="js/ui-bootstrap-tpls-2.1.4.min.js"></script>
+<script src="movie.constant.js"></script>
+<!--endinject-->
+
+</body>
+
+</html>
