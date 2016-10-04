@@ -77,8 +77,11 @@
                                 <div class="error" ng-if="signUpForm.inputPassword.$dirty" ng-messages="signUpForm.inputPassword.$error">
                                     <div ng-message="required">Please enter a password</div>
                                     <div ng-message="minlength">Password must be longer than 5 characters</div>
-                                    
+                                    <div class="error" ng-show="signUpVm.comparePassword()">Password not same as
+                                        Password 2
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
 
@@ -89,6 +92,9 @@
                                 <div class="error" ng-if="signUpForm.inputPassword2.$dirty" ng-messages="signUpForm.inputPassword2.$error">
                                     <div ng-message="required">Please enter a password</div>
                                     <div ng-message="minlength">Password must be longer than 5 characters</div>
+                                    <div class="error" ng-show="signUpVm.comparePassword()">Password not same as
+                                        Password 1
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -120,29 +126,8 @@
     </div>
 
 
-    <footer class="footer">
-        <h5>Questions? Call 0-000-000-000</h5>
-        <div>
-            <ul class="list-inline ">
-                <li>
-                    <a href="# ">
-                        <h5>Pricing</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="# ">
-                        <h5>Contact</h5>
-                    </a>
-                </li>
-                <li>
-                    <a href="# ">
-                        <h5>Terms</h5>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </footer>
 
+    <div ng-include="'./templates/footer.tmpl.html'"></div>
 
 </div>
 

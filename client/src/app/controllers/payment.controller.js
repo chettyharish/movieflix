@@ -69,6 +69,7 @@
                     userVm.user.contactNumber = tempData.PhoneNumber;
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 })
         }
 
@@ -101,6 +102,7 @@
                     window.location.href = "./user-account.html";
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 })
 
 

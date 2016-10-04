@@ -10,7 +10,12 @@
     function signUpController(signUpService) {
         var signUpVm = this;
         signUpVm.createUser = createUser;
+        signUpVm.comparePassword = comparePassword;
+        signUpVm.newUser = {};
 
+        function comparePassword() {
+            return signUpVm.newUser.password != signUpVm.newUser.password2;
+        }
 
         function createUser() {
 
@@ -41,9 +46,11 @@
                         }, function (error) {
                             window.alert("UserName and Email already in use")
                             console.log(error);
+                            window.location.href="./error.html";
                         })
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 });
 
 

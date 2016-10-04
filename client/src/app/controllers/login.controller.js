@@ -43,7 +43,7 @@
 
 
                 }, function (error) {
-                    window.alert("ERROR : " + error.message);
+                    window.location.href="./error.html";
                     console.log(error);
                 })
 

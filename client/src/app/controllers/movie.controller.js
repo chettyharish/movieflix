@@ -95,6 +95,7 @@
                     comment = data;
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 })
 
         }

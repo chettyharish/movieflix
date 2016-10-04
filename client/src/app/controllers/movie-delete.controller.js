@@ -48,6 +48,7 @@
                     movieVm.delMovie.releaseDate = new Date(movieVm.movieData.Released);
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 })
         }
 
@@ -57,6 +58,7 @@
                     window.location.href="./main-grid.html";
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 })
         }
 

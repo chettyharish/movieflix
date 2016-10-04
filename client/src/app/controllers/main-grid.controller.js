@@ -128,6 +128,7 @@
                     movieVm.page.numPages = movieVm.getPagesByType();
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 })
 
         }

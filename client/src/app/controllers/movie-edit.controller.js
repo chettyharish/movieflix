@@ -62,6 +62,7 @@
 
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 })
         }
 
@@ -91,6 +92,7 @@
 
                 }, function (error) {
                     console.log(error);
+                    window.location.href="./error.html";
                 })
         }
 
