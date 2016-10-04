@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.movie.app.entity.Comment;
 import com.movie.app.entity.Movie;
 import com.movie.app.exception.IllegalSortingOrderException;
 import com.movie.app.exception.MovieNotFoundException;
@@ -178,9 +179,10 @@ public class MovieServiceImp implements MovieService {
 	public void remove(String movieId) {
 		Movie existingTemp = repository.findOne(movieId);
 		if (existingTemp == null) {
-			throw new MovieNotFoundException("Temp not found");
+			throw new MovieNotFoundException("Movie not found");
 		}
-		repository.delete(existingTemp);
+
+		System.out.println(existingTemp.getTitle());
 
 	}
 

@@ -22,6 +22,19 @@ public class AuthenticatorRepositoryImp implements AuthenticatorRepository {
 	}
 
 	@Override
+	public Authenticator findByUserName(String username, String password) {
+		TypedQuery<Authenticator> query = em.createNamedQuery("Authenticator.findByUserName", Authenticator.class);
+		query.setParameter("pUserName", username);
+		query.setParameter("pPassword", password);
+
+		System.out.println(username + "   +  " + password);
+		List<Authenticator> lis = query.getResultList();
+		if (lis.size() == 1)
+			return lis.get(0);
+		return null;
+	}
+
+	@Override
 	public Authenticator findOne(String authenticatorId) {
 		return em.find(Authenticator.class, authenticatorId);
 	}

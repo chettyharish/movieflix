@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table
-@NamedQueries({@NamedQuery(name = "Comment.findAll", query = "SELECT c from Comment c ")})
+@NamedQueries({ @NamedQuery(name = "Comment.findAll", query = "SELECT c from Comment c ") })
 
 public class Comment {
 	@Id
@@ -23,6 +23,9 @@ public class Comment {
 
 	@JsonProperty("Rating")
 	private int rating;
+
+	@JsonProperty("UserName")
+	private String userName;
 
 	public Comment() {
 		commentId = UUID.randomUUID().toString();
@@ -48,9 +51,18 @@ public class Comment {
 		this.rating = rating;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
-		return "Comment [commentId=" + commentId + ", text=" + text + ", rating=" + rating + "]";
+		return "Comment [commentId=" + commentId + ", text=" + text + ", rating=" + rating + ", userName=" + userName
+				+ "]";
 	}
 
 }

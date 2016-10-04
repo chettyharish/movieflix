@@ -2,6 +2,7 @@ package com.movie.app.entity;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,10 +16,12 @@ import com.movie.app.enumeration.AccessType;
 
 @Entity
 @Table
-@NamedQueries({ @NamedQuery(name = "Authenticator.findAll", query = "SELECT a from Authenticator a "),
+@NamedQueries({
+
 		@NamedQuery(name = "Authenticator.findByUserName", query = "SELECT a from Authenticator a where a.userName=:pUserName AND a.password=:pPassword")
 
 })
+
 public class Authenticator {
 
 	@Id
@@ -28,14 +31,15 @@ public class Authenticator {
 	@JsonProperty("UserName")
 	private String userName;
 
+	@Column(unique = true)
+	@JsonProperty("UserID")
+	private String userId;
+
 	@JsonProperty("Password")
 	private String password;
 
 	@JsonProperty("Type")
 	private AccessType type;
-
-	@OneToOne
-	private User user;
 
 	public Authenticator() {
 		authenticatorId = UUID.randomUUID().toString();
@@ -51,6 +55,14 @@ public class Authenticator {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getPassword() {
@@ -69,18 +81,10 @@ public class Authenticator {
 		this.type = type;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	@Override
 	public String toString() {
-		return "Authenticator [authenticatorId=" + authenticatorId + ", userName=" + userName + ", password=" + password
-				+ ", type=" + type + ", user=" + user + "]";
+		return "Authenticator [authenticatorId=" + authenticatorId + ", userName=" + userName + ", userId=" + userId
+				+ ", password=" + password + ", type=" + type + "]";
 	}
 
 }

@@ -1,5 +1,5 @@
 package com.movie.app.enumeration;
 
-public enum MovieType {
+public enum movieType {
 	MOVIE, TV_SERIES
 }

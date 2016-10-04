@@ -32,6 +32,9 @@ public class User {
 
 	@Id
 	private String userId;
+	
+	@JsonProperty("UserName")
+	private String userName;
 
 	@JsonProperty("FirstName")
 	private String firstName;
@@ -49,24 +52,36 @@ public class User {
 	private String gender;
 
 	@JsonProperty("CreateDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 
 	@JsonProperty("UpdateDate")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date updateDate;
+	
+	@JsonProperty("BirthDate")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private Date birthDate;
 
-	// @OneToOne
-	// private Authenticator authenticator;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Payment payment;
 
 	@OneToMany
 	private List<Comment> commentList;
+
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public User() {
 		userId = UUID.randomUUID().toString();
@@ -156,20 +171,20 @@ public class User {
 		this.commentList = commentList;
 	}
 
-	// public Authenticator getAuthenticator() {
-	// return authenticator;
-	// }
-	//
-	// public void setAuthenticator(Authenticator authenticator) {
-	// this.authenticator = authenticator;
-	// }
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
-				+ phoneNumber + ", emailAddress=" + emailAddress + ", gender=" + gender + ", createDate=" + createDate
-				+ ", updateDate=" + updateDate + ", address=" + address + ", payment=" + payment + ", commentList="
-				+ commentList + "]";
+		return "User [userId=" + userId + ", userName=" + userName + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", phoneNumber=" + phoneNumber + ", emailAddress=" + emailAddress + ", gender=" + gender
+				+ ", createDate=" + createDate + ", updateDate=" + updateDate + ", birthDate=" + birthDate
+				+ ", address=" + address + ", payment=" + payment + ", commentList=" + commentList + "]";
 	}
 
 }

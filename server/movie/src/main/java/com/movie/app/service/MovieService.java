@@ -2,6 +2,7 @@ package com.movie.app.service;
 
 import java.util.List;
 
+import com.movie.app.entity.Comment;
 import com.movie.app.entity.Movie;
 
 public interface MovieService {
@@ -46,4 +47,6 @@ public interface MovieService {
 	public List<Movie> findSortedMovieIMDBRating(String order);
 
 	public List<Movie> findSortedMovieIMDBVotes(String order);
+	
+	
 }

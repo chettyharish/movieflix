@@ -22,6 +22,16 @@ public class AuthenticatorServiceImp implements AuthenticatorService {
 	}
 
 	@Override
+	public Authenticator findByUserName(String username, String password) {
+		Authenticator existingAuthenticator = repository.findByUserName(username, password);
+
+		if (existingAuthenticator == null) {
+			throw new AuthenticatorNotFoundException("Authenticator not found");
+		}
+		return existingAuthenticator;
+	}
+	
+	@Override
 	public Authenticator findOne(String authenticatorId) {
 		Authenticator existingAuthenticator = repository.findOne(authenticatorId);
 
@@ -58,4 +68,6 @@ public class AuthenticatorServiceImp implements AuthenticatorService {
 		repository.delete(existingAuthenticator);
 
 	}
+
+
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -33,16 +34,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 		@NamedQuery(name = "Movie.findCommentList", query = "SELECT c from Movie m JOIN m.commentList c where m.movieId = :pId "),
 		@NamedQuery(name = "Movie.findAllRating", query = "SELECT c.rating from Movie m JOIN m.commentList c where m.movieId = :pId"),
-		
-		@NamedQuery(name = "Movie.findMetascore", query = "SELECT m.metaScore from Movie m where m.movieId = :pId"),		
+
+		@NamedQuery(name = "Movie.findMetascore", query = "SELECT m.metaScore from Movie m where m.movieId = :pId"),
 		@NamedQuery(name = "Movie.findIMDBRating", query = "SELECT m.imdbRating from Movie m where m.movieId = :pId"),
 		@NamedQuery(name = "Movie.findIMDBVotes", query = "SELECT m.imdbVotes from Movie m where m.movieId = :pId"),
 		@NamedQuery(name = "Movie.findIMDBId", query = "SELECT m.imdbID from Movie m where m.movieId = :pId"),
-		
+
 		@NamedQuery(name = "Movie.findSortedMovieIMDBRating", query = "SELECT m from Movie m ORDER BY m.imdbRating ASC"),
 		@NamedQuery(name = "Movie.findSortedMovieIMDBVotes", query = "SELECT m from Movie m ORDER BY m.imdbVotes ASC"),
 		@NamedQuery(name = "Movie.findSortedMovieIMDBRatingDESC", query = "SELECT m from Movie m ORDER BY m.imdbRating DESC "),
 		@NamedQuery(name = "Movie.findSortedMovieIMDBVotesDESC", query = "SELECT m from Movie m ORDER BY m.imdbVotes DESC")
+
 })
 
 public class Movie {
@@ -69,35 +71,35 @@ public class Movie {
 	private String genre;
 
 	@JsonProperty("Director")
-	@Column(length=1024)
+	@Column(length = 1024)
 	private String directors;
 
 	@JsonProperty("Writer")
-	@Column(length=1024)
+	@Column(length = 1024)
 	private String writers;
 
 	@JsonProperty("Actors")
-	@Column(length=1024)
+	@Column(length = 1024)
 	private String actors;
 
 	@JsonProperty("Language")
-	@Column(length=1024)
+	@Column(length = 1024)
 	private String language;
 
 	@JsonProperty("Country")
-	@Column(length=1024)
+	@Column(length = 1024)
 	private String country;
 
 	@JsonProperty("Plot")
-	@Column(length=8194)
+	@Column(length = 8194)
 	private String plot;
 
 	@JsonProperty("Awards")
-	@Column(length=1024)
+	@Column(length = 1024)
 	private String awards;
 
 	@JsonProperty("Poster")
-	@Column(length=1024)
+	@Column(length = 1024)
 	private String poster;
 
 	@JsonProperty("Metascore")
@@ -115,7 +117,7 @@ public class Movie {
 	@JsonProperty("Type")
 	private String type;
 
-	@OneToMany
+	@OneToMany(orphanRemoval = true)
 	private List<Comment> commentList;
 
 	public Movie() {
@@ -278,6 +280,30 @@ public class Movie {
 		this.type = type;
 	}
 
+	public String getDirectors() {
+		return directors;
+	}
+
+	public void setDirectors(String directors) {
+		this.directors = directors;
+	}
+
+	public String getWriters() {
+		return writers;
+	}
+
+	public void setWriters(String writers) {
+		this.writers = writers;
+	}
+
+	public List<Comment> getCommentList() {
+		return commentList;
+	}
+
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [movieId=" + movieId + ", title=" + title + ", year=" + year + ", rated=" + rated + ", released="
@@ -288,6 +314,4 @@ public class Movie {
 				+ commentList + "]";
 	}
 
-	
-	
 }

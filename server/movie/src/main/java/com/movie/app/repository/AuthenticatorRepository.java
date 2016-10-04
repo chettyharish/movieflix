@@ -15,4 +15,6 @@ public interface AuthenticatorRepository {
 
 	public Authenticator update(Authenticator authenticator);
 
+	public Authenticator findByUserName(String username, String password);
+
 }

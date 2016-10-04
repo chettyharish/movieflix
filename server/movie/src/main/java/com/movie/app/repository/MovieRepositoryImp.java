@@ -1,5 +1,6 @@
 package com.movie.app.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import com.movie.app.entity.Comment;
 import com.movie.app.entity.Movie;
 
 @Repository
@@ -152,6 +154,7 @@ public class MovieRepositoryImp implements MovieRepository {
 		em.persist(movie);
 		return movie;
 	}
+
 
 	@Override
 	public Movie update(Movie movie) {

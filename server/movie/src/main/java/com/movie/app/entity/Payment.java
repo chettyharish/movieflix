@@ -3,10 +3,12 @@ package com.movie.app.entity;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -16,18 +18,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table
 @NamedQueries({
-
 		@NamedQuery(name = "Payment.findAll", query = "SELECT p from Payment p "),
-		@NamedQuery(name = "Payment.findByPaymentId", query = "SELECT p from Payment p where p.paymentId=:ppaymentId")
-
+		@NamedQuery(name = "Payment.findByPaymentId", query = "SELECT p from Payment p where p.paymentId=:ppaymentId"),
+		@NamedQuery(name = "Payment.findByCcNumber", query = "SELECT p from Payment p where p.ccNumber=:pCCNumber")
 })
 public class Payment {
 
 	@Id
 	private String paymentId;
-
-	@JsonProperty("CCType")
-	private String ccType;
 
 	@JsonProperty("CCName")
 	private String ccName;
@@ -41,6 +39,9 @@ public class Payment {
 	@JsonProperty("ExpiryDate")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date expiryDate;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Address address;
 
 	public Payment() {
 		paymentId = UUID.randomUUID().toString();
@@ -48,14 +49,6 @@ public class Payment {
 
 	public String getPaymentId() {
 		return paymentId;
-	}
-
-	public String getCcType() {
-		return ccType;
-	}
-
-	public void setCcType(String ccType) {
-		this.ccType = ccType;
 	}
 
 	public String getCcName() {
@@ -90,10 +83,18 @@ public class Payment {
 		this.expiryDate = expiryDate;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
-		return "Payment [paymentId=" + paymentId + ", ccType=" + ccType + ", ccName=" + ccName + ", ccNumber="
-				+ ccNumber + ", ccCVV=" + ccCVV + ", expiryDate=" + expiryDate + "]";
+		return "Payment [paymentId=" + paymentId + ", ccName=" + ccName + ", ccNumber=" + ccNumber + ", ccCVV=" + ccCVV
+				+ ", expiryDate=" + expiryDate + ", address=" + address + "]";
 	}
 
 }

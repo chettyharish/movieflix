@@ -134,9 +134,6 @@ public class MovieController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "movielist", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public void createList(@RequestBody MovieWrapper movieWrapper) {
-		System.out.println("Starting");
-		System.out.println(movieWrapper == null);
-		System.out.println(movieWrapper.getMovies().size());
 		for (Movie movie : movieWrapper.getMovies())
 			System.out.println(movie.getTitle());
 		for (Movie movie : movieWrapper.getMovies())
