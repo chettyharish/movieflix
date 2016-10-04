@@ -1,0 +1,13 @@
+/*LOGIN PAGE*/
+
+.login-body {
+    background-color: #f3f3f3;
+    background: url(../images/daredevil.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.loginForm {
+    background-color: #f3f3f3;
+    padding: 15px;
+    margin: 0 auto 4% auto;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html >
+<html ng-app="movie">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>MovieFlix - Login</title>
+
+
+    <!--bower:css-->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <!--endinject-->
+
+    <!--inject:css-->
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main-grid.css">
+    <link rel="stylesheet" href="css/movie-page.css">
+    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/user-account.css">
+    <link rel="stylesheet" href="css/user-edit.css">
+    <!--endinject-->
+
+</head>
+
+<body class="login-body">
+
+<div class="login-wrapper" ng-controller="loginController as loginVm">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="form-top">
+
+                <div class="row">
+                    <div class="logo col-xs-6 col-xs-offset-3 col-md-3 col-md-offset-0">
+                        <img src="images/logo.png" class="img-responsive"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-0 col-md-4 col-md-offset-4">
+                        <div class="login-form">
+                            <form ng-submit="loginForm.$valid && loginVm.authenticateUser()" class="loginForm" id="loginForm" name="loginForm">
+                                <h2 class="loginForm-heading">Sign in</h2>
+
+                                <div class="form-group">
+                                    <h5><label for="userName">USERNAME</label></h5>
+                                    <div class="login">
+                                        <input ng-model="loginVm.user.userName" type="text" id="userName" name="userName" class="form-control input-lg" placeholder="User Name" minlength="4" required autofocus>
+                                        <div class="error" ng-if="loginForm.userName.$dirty" ng-messages="loginForm.userName.$error">
+                                            <div ng-message="required">Please enter a username</div>
+                                            <div ng-message="minlength">Username must be longer than 3 characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <h5><label for="inputPassword">PASSWORD</label></h5>
+                                    <div class="login">
+                                        <input ng-model="loginVm.user.password" type="password" id="inputPassword" name="inputPassword" class="form-control input-lg" placeholder="Password" minlength="6" required>
+                                        <div class="error" ng-if="loginForm.inputPassword.$dirty" ng-messages="loginForm.inputPassword.$error">
+                                            <div ng-message="required">Please enter a password</div>
+                                            <div ng-message="minlength">Password must be longer than 5 characters</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h5><a href="index.html">Forgot your email or password?</a></h5>
+                                <div class="form-group checkbox">
+                                    <label>
+                                        <input ng-model="loginVm.user.remember" type="checkbox" value="remember-me"> Remember me
+                                    </label>
+                                </div>
+                                <button class="btn btn-lg btn-primary btn-block" ng-disabled="loginForm.$invalid" type="submit">
+                                    Sign in
+                                </button>
+                                <h5>New to MovieFlix? <a href="index.html">Sign up Now!</a></h5>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'./templates/footer.tmpl.html'"></div>
+</div>
+
+
+
+<!--bower:js-->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<!--endinject-->
+
+<!--inject:js-->
+<script src="movie.js"></script>
+<script src="app/services/user-edit.service.js"></script>
+<script src="app/services/user-account.service.js"></script>
+<script src="app/services/sign-up.service.js"></script>
+<script src="app/services/payment.service.js"></script>
+<script src="app/services/movie.service.js"></script>
+<script src="app/services/movie-edit.service.js"></script>
+<script src="app/services/movie-delete.service.js"></script>
+<script src="app/services/movie-add.service.js"></script>
+<script src="app/services/main-grid.service.js"></script>
+<script src="app/services/login.service.js"></script>
+<script src="app/services/custom-cookie.service.js"></script>
+<script src="app/directives/navbar.directive.js"></script>
+<script src="app/controllers/user-edit.controller.js"></script>
+<script src="app/controllers/user-account.controller.js"></script>
+<script src="app/controllers/sign-up.controller.js"></script>
+<script src="app/controllers/payment.controller.js"></script>
+<script src="app/controllers/navbar.controller.js"></script>
+<script src="app/controllers/movie.controller.js"></script>
+<script src="app/controllers/movie-edit.controller.js"></script>
+<script src="app/controllers/movie-delete.controller.js"></script>
+<script src="app/controllers/movie-add.controller.js"></script>
+<script src="app/controllers/main-grid.controller.js"></script>
+<script src="app/controllers/login.controller.js"></script>
+<script src="app/configuration/module.config.js"></script>
+<script src="js/ui-bootstrap-tpls-2.1.4.min.js"></script>
+<script src="movie.constant.js"></script>
+<!--endinject-->
+
+
+
+</body>
+
+</html>

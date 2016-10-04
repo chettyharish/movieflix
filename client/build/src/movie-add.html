@@ -1,0 +1,276 @@
+<!DOCTYPE html >
+<html ng-app="movie">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/movie.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>MovieFlix - Add Movie</title>
+</head>
+
+<body class="movie-add-body">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="images/logo.png" class="img-responsive"/></a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ">
+                <li><a href="#"><h5>Home</h5></a></li>
+                <li><a href="#"><h5>Movies</h5></a></li>
+                <li><a href="#"><h5>TV Series</h5></a></li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="nav navbar-form navbar-right search-bar">
+                        <div class="form-group">
+                            <input type="text" class="form-control search-bar-text" placeholder="Search"/>
+                            <button type="submit" class="btn btn-danger search-bar-icon">
+                                <span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </form>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <h5>My Account</h5><span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Billing</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="movie-add-wrapper" ng-controller="movieAddController as movieVm">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="movie-add-heading col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
+                <h2>Movie Information</h2>
+            </div>
+
+            <div class="form-movie-add col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
+
+                <form ng-submit="movieAddForm.$valid && movieVm.addMovie()" class="movieAddForm" id="movieAddForm" name="movieAddForm" novalidate>
+                    <div class="movieAddFormLeft col-md-6">
+                        <div class="form-group">
+                            <label for="movieName" class="movie-add-label"> MOVIE NAME</label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.movieName" type="text" name="movieName" id="movieName" class="form-control input-lg" placeholder="Movie Name" required autofocus minlength="4">
+                                <div class="error" ng-if="movieAddForm.movieName.$dirty" ng-messages="movieAddForm.movieName.$error">
+                                    <div ng-message="required">Please enter a name for the movie</div>
+                                    <div ng-message="minlength">Movie name must be longer than 3 characters</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="releaseDate" class="movie-add-label"> RELEASE DATE </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.releaseDate" type="date" id="releaseDate" name="releaseDate" class="form-control input-lg">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating" class="movie-add-label"> RATING </label>
+                            <div class="movie-add">
+                                <select ng-model="movieVm.newMovie.rating" name="rating" id="rating" name="rating" class="form-control input-lg">
+                                    <option value=""></option>
+                                    <option value="NA">N/A</option>
+                                    <option value="G">G</option>
+                                    <option value="PG">PG</option>
+                                    <option value="PG-13">PG-13</option>
+                                    <option value="R">R</option>
+                                    <option value="TV-PG">TV-PG</option>
+                                    <option value="TV-14">TV-14</option>
+                                    <option value="TV-MA">TV-MA</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="runtime" class="movie-add-label"> RUNTIME (MINS) </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.runtime" type="number" id="runtime" name="runtime" class="form-control input-lg" placeholder="Runtime">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genres" class="movie-add-label"> GENRES </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.genres" type="text" id="genres" name="genres" class="form-control input-lg" placeholder="Genre">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="directors" class="movie-add-label"> DIRECTORS </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.directors" type="text" id="directors" name="directors" class="form-control input-lg" placeholder="Directors">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="actors" class="movie-add-label"> ACTORS </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.actors" type="text" id="actors" name="actors" class="form-control input-lg" placeholder="Actors">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="writers" class="movie-add-label"> WRITERS </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.writers" type="text" id="writers" name="writers" class="form-control input-lg" placeholder="Writers">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language" class="movie-add-label"> LANGUAGE </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.languages" type="text" id="language" name="language" class="form-control input-lg" placeholder="Language">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country" class="movie-add-label"> COUNTRY </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.country" type="text" id="country" name="country" class="form-control input-lg" placeholder="Country">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="movieaddFormRight col-md-6 ">
+                        <div class="form-group">
+                            <label for="awards" class="movie-add-label"> AWARDS </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.awards" type="text" id="awards" name="awards" class="form-control input-lg" placeholder="Awards">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="poster" class="movie-add-label"> POSTER LINK </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.posterLink" type="text" id="poster" name="poster" class="form-control input-lg" placeholder="Poster Link">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="metaScore" class="movie-add-label"> METASCORE </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.metaScore" type="number" id="metaScore" name="metaScore" class="form-control input-lg" placeholder="Metascore" min="0" max="100">
+                                <div class="error" ng-if="movieAddForm.metaScore.$dirty" ng-messages="movieAddForm.metaScore.$error">
+                                    <div ng-message="min">Please enter a Meta Score between 0 and 100</div>
+                                    <div ng-message="max">Please enter a Meta Score between 0 and 100</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="imdbRating" class="movie-add-label"> IMDB RATING </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.imdbRating" type="number" min="0.0" step="0.01" id="imdbRating" name="imdbRating" class="form-control input-lg" placeholder="IMDB Rating" min="0" max="10">
+                                <div class="error" ng-if="movieAddForm.imdbRating.$dirty" ng-messages="movieAddForm.imdbRating.$error">
+                                    <div ng-message="min">Please enter an IMDB Rating between 0 and 10</div>
+                                    <div ng-message="max">Please enter an IMDB Rating between 0 and 10</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="imdbVotes" class="movie-add-label"> IMDB VOTES </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.imdbNumVotes" type="number" id="imdbVotes" name="imdbVotes" class="form-control input-lg" placeholder="Number of IMDB Votes" min="0">
+                                <div class="error" ng-if="movieAddForm.imdbNumVotes.$dirty" ng-messages="movieAddForm.imdbNumVotes.$error">
+                                    <div ng-message="min">The number of votes must be 0 or higher</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imdbID" class="movie-add-label"> IMDB ID </label>
+                            <div class="movie-add">
+                                <input ng-model="movieVm.newMovie.imdbID" type="text" id="imdbID" name="imdbID" class="form-control input-lg" placeholder="IMDB ID">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type" class="movie-add-label"> TYPE </label>
+                            <div class="movie-add">
+                                <select ng-model="movieVm.newMovie.type" name="type" id="type" name="type" class="form-control input-lg">
+                                    <option value=""></option>
+                                    <option value="series">TV SERIES</option>
+                                    <option value="movie">MOVIE</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plot" class="movie-add-label"> PLOT </label>
+                            <div class="movie-add">
+                                <textarea ng-model="movieVm.newMovie.plot" class="form-control" rows="6" id="plot" name="plot"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-primary btn-block" ng-disabled="movieAddForm.$invalid" type="submit">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <h5>Questions? Call 0-000-000-000</h5>
+    <div>
+        <ul class="list-inline ">
+            <li><a href="# "><h5>Pricing</h5></a></li>
+            <li><a href="# "><h5>Contact</h5></a></li>
+            <li><a href="# "><h5>Terms</h5></a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="https://code.angularjs.org/1.5.8/angular.js"></script>
+<script src="https://code.angularjs.org/1.5.8/angular-messages.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+<script src="js\ui-bootstrap-tpls-2.1.4.min.js"></script>
+<script src="movie.js"></script>
+<script src="controllers\movie-add.controller.js"></script>
+<script src="services\movie-add.service.js"></script>
+
+
+</body>
+
+</html>

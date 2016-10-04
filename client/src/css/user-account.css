@@ -1,0 +1,38 @@
+/*ACCOUNT*/
+
+@media (max-width: 991px) {
+    .user-account-wrapper .user-account-details .account-sub-detail-title h2 {
+        text-align: center;
+    }
+
+    .user-account-wrapper .user-account-details h1 {
+        text-align: center;
+    }
+}
+
+.account-body {
+    background-color: #f3f3f3;
+}
+
+.user-account-wrapper {
+    display: inline-block;
+    margin: 10% auto 4% auto;
+}
+
+.account-wrapper .account-sub-detail {
+    display: inline-block;
+}
+
+.account-wrapper .separator {
+    background-color: black;
+    min-height: 3px;
+    opacity: 0.5;
+}
+
+.user-account-wrapper .account-sub-detail .account-sub-detail-title h2 {
+    color: #999;
+}
+
+.account-wrapper .account-sub-detail-change {
+    text-align: right;
+}

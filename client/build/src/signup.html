@@ -1,0 +1,145 @@
+<!DOCTYPE html >
+<html ng-app="movie">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <title>MovieFlix - Signup</title>
+
+    <script type="text/ng-template" id="heading.tmpl">
+    </script>
+
+
+</head>
+
+<body class="signup-body">
+
+<div class="signup-wrapper"  ng-controller="signUpController as signUpVm">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="form-top col-xs-6 col-xs-offset-3 col-md-3 col-md-offset-0">
+                <div class="logo">
+                    <img src="images/logo.png" class="img-responsive"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-xs-offset-0 col-md-6 col-md-offset-3">
+                <div class="signup-form">
+
+
+                    <form ng-submit="signUpForm.$valid && signUpVm.createUser()" name="signUpForm" id="signUpForm" class="signUpForm " novalidate>
+                        <h2 class="form-signup-heading">Sign Up Now!</h2>
+
+                        <div class="form-group">
+                            <h5><label for="inputEmail">EMAIL ADDRESS</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.email" type="email" id="inputEmail" name="inputEmail" class="form-control input-lg" placeholder="Email address" autofocus required minlength="5">
+                                <div class="error" ng-if="signUpForm.inputEmail.$dirty" ng-messages="signUpForm.inputEmail.$error">
+                                    <div ng-message="required">Please enter an email address</div>
+                                    <div ng-message="email">Please enter a correct email address</div>
+                                    <div ng-message="minlength">Email must be longer than 4 characters</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h5><label for="userName">USERNAME</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.userName" type="text" id="userName" name="userName" class="form-control input-lg" placeholder="Username" required minlength="4">
+                                <div class="error" ng-if="signUpForm.userName.$dirty" ng-messages="signUpForm.userName.$error">
+                                    <div ng-message="required">Please enter a username</div>
+                                    <div ng-message="minlength">Username must be longer than 3 characters</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <h5><label for="inputPassword">PASSWORD</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.password" type="password" id="inputPassword" name="inputPassword" class="form-control input-lg" placeholder="Password" required minlength="6">
+                                <div class="error" ng-if="signUpForm.inputPassword.$dirty" ng-messages="signUpForm.inputPassword.$error">
+                                    <div ng-message="required">Please enter a password</div>
+                                    <div ng-message="minlength">Password must be longer than 5 characters</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h5><label for="inputPassword2">PASSWORD AGAIN</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.password2" type="password" id="inputPassword2" name="inputPassword2" class="form-control input-lg" placeholder="Password Again" required minlength="6">
+                                <div class="error" ng-if="signUpForm.inputPassword2.$dirty" ng-messages="signUpForm.inputPassword2.$error">
+                                    <div ng-message="required">Please enter a password</div>
+                                    <div ng-message="minlength">Password must be longer than 5 characters</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h5><label for="birthday">BIRTHDATE</label></h5>
+                            <div class="signUpInput">
+                                <input ng-model="signUpVm.newUser.birthDate" type="date" class="form-control input-lg" id="birthDate" name="birthDate" placeholder="MM / DD / YYYY" required>
+                                <div class="error" ng-if="signUpForm.birthDate.$dirty" ng-messages="signUpForm.birthDate.$error">
+                                    <div ng-message="date">Please enter a birth date</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <button type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-lg btn-primary btn-block">Sign Up</button>
+                        <h5><a href="#">Already a Member?</a></h5>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <footer class="footer">
+        <h5>Questions? Call 0-000-000-000</h5>
+        <div>
+            <ul class="list-inline ">
+                <li>
+                    <a href="# ">
+                        <h5>Pricing</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="# ">
+                        <h5>Contact</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="# ">
+                        <h5>Terms</h5>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+
+</div>
+
+
+<script src="https://code.angularjs.org/1.5.8/angular.js"></script>
+<script src="https://code.angularjs.org/1.5.8/angular-messages.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+<script src="js\ui-bootstrap-tpls-2.1.4.min.js"></script>
+<script src="movie.js"></script>
+<script src="controllers\sign-up.controller.js"></script>
+<script src="services\sign-up.service.js"></script>
+</body>
+
+</html>

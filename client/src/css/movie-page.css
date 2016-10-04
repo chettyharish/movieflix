@@ -1,0 +1,60 @@
+
+.movie-body {
+    background-color: #f3f3f3;
+}
+
+.movie-wrapper {
+    margin: 6% auto 4% auto;
+}
+
+.movie-heading {
+    padding-bottom: 2%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.movie-block {
+    padding-top: 2%;
+    background-color: white;
+}
+
+.movie-heading-rating-holder {
+    background-color: black;
+    font-size:50px !important;
+    text-align: center;
+    color:gold;
+}
+
+.movieCommentForm .commentStar{
+    font-size:50px !important;
+    text-align: center;
+    color:gold;
+}
+
+.movie-all-user-comments .movie-comment-user-name .ratingBar{
+    font-size:30px !important;
+    text-align: center;
+    color:gold;
+
+}
+
+.movie-wrapper .movie-comment-form {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background-color: #f3f3f3;
+}
+
+.movie-wrapper .movie-comment-form .btn {
+    margin-top: 1%;
+}
+
+.movie-wrapper .separator {
+    background-color: black;
+    min-height: 3px;
+    margin-top: 1%;
+}
+
+.movie-all-user-comments .commentBox {
+    margin-top: 4%;
+    border-top:4px solid black;
+}

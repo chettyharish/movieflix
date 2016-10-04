@@ -1,0 +1,257 @@
+<!DOCTYPE html >
+<html ng-app="movie">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>MovieFlix - Delete Movie</title>
+    <!--bower:css-->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <!--endinject-->
+    <!--inject:css-->
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main-grid.css">
+    <link rel="stylesheet" href="css/movie-page.css">
+    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/user-account.css">
+    <link rel="stylesheet" href="css/user-edit.css">
+    <!--endinject-->
+
+</head>
+
+<body class="movie-delete-body">
+
+<div ng-include="'./templates/navbar.tmpl.html'"></div>
+
+<div class="movie-delete-wrapper" ng-controller="movieDeleteController as movieVm">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="movie-delete-heading col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
+                <h2>Movie Information</h2>
+            </div>
+
+            <div class="form-movie-delete col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
+
+
+                <form ng-submit="movieVm.deleteMovie()" class="movieDeleteForm">
+                    <div class="movieDeleteFormLeft col-md-6">
+
+                        <div class="form-group">
+                            <label for="movieName" class="movie-delete-label"> MOVIE NAME</label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.movieName" type="text" id="movieName" name="movieName" class="form-control input-lg" placeholder={{movieVm.movieData.Title}} disabled="disabled">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="releaseDate" class="movie-delete-label"> RELEASE DATE </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.releaseDate" type="date" id="releaseDate" name="releaseDate" class="form-control input-lg" placeholder={{movieVm.movieData.Released}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating" class="movie-delete-label"> RATING </label>
+                            <div class="movie-delete">
+                                <select ng-model="movieVm.delMovie.rating" name="rating" id="rating" class="form-control input-lg" disabled="disabled">
+                                    <option value=""></option>
+                                    <option value="NA">N/A</option>
+                                    <option value="G">G</option>
+                                    <option value="PG">PG</option>
+                                    <option value="PG-13">PG-13</option>
+                                    <option value="R">R</option>
+                                    <option value="TV-PG">TV-PG</option>
+                                    <option value="TV-14">TV-14</option>
+                                    <option value="TV-MA">TV-MA</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="runtime" class="movie-delete-label"> RUNTIME (MINS) </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.runtime" type="number" id="runtime" name="runtime" class="form-control input-lg" placeholder={{movieVm.movieData.Runtime}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genres" class="movie-delete-label"> GENRES </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.genres" type="text" id="genres" name="genres" class="form-control input-lg" placeholder={{movieVm.movieData.Genre}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="directors" class="movie-delete-label"> DIRECTORS </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.directors" type="text" id="directors" name="directors" class="form-control input-lg" placeholder={{movieVm.movieData.Director}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="actors" class="movie-delete-label"> ACTORS </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.actors" type="text" id="actors" name="actors" class="form-control input-lg" placeholder={{movieVm.movieData.Actors}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="writers" class="movie-delete-label"> WRITERS </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.writers" type="text" id="writers" name="writers" class="form-control input-lg" placeholder={{movieVm.movieData.Writer}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language" class="movie-delete-label"> LANGUAGE </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.languages" type="text" id="language" name="language" class="form-control input-lg" placeholder={{movieVm.movieData.Language}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country" class="movie-delete-label"> COUNTRY </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.country" type="text" id="country" name="country" class="form-control input-lg" placeholder={{movieVm.movieData.Country}} disabled="disabled">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="movieDeleteFormRight col-md-6 ">
+                        <div class="form-group">
+                            <label for="awards" class="movie-delete-label"> AWARDS </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.awards" type="text" id="awards" name="awards" class="form-control input-lg" placeholder={{movieVm.movieData.Awards}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="poster" class="movie-delete-label"> POSTER LINK </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.posterLink" type="text" id="poster" name="poster" class="form-control input-lg" placeholder={{movieVm.movieData.Poster}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="metascore" class="movie-delete-label"> METASCORE </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.metaScore" type="number" id="metascore" name="metascore" class="form-control input-lg" placeholder={{movieVm.movieData.Metascore}} disabled="disabled">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="imdbRating" class="movie-delete-label"> IMDB RATING </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.imdbRating" type="number" name="imdbRating" min="0.0" step="0.01" id="imdbRating" class="form-control input-lg" placeholder={{movieVm.movieData.imdbRating}} disabled="disabled">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="imdbVotes" class="movie-delete-label"> IMDB VOTES </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.imdbNumVotes" type="number" id="imdbVotes" name="imdbVotes" class="form-control input-lg" placeholder={{movieVm.movieData.imdbVotes}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imdbID" class="movie-delete-label"> IMDB ID </label>
+                            <div class="movie-delete">
+                                <input ng-model="movieVm.delMovie.imdbID" type="text" name="imdbID" id="imdbID" class="form-control input-lg" placeholder={{movieVm.movieData.imdbID}} disabled="disabled">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type" class="movie-delete-label"> TYPE </label>
+                            <div class="movie-delete">
+                                <select ng-model="movieVm.delMovie.type" name="type" id="type" name="type" class="form-control input-lg" disabled="disabled">
+                                    <option value=""></option>
+                                    <option value="series">TV SERIES</option>
+                                    <option value="movie">MOVIE</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plot" class="movie-delete-label"> PLOT </label>
+                            <div class="movie-delete">
+                                <textarea ng-model="movieVm.delMovie.plot" class="form-control" rows="6" id="plot" name="plot" disabled="disabled" placeholder={{movieVm.movieData.Plot}}></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-primary btn-block btn-danger" type="submit">Confirm Delete
+                            </button>
+                        </div>
+
+
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div ng-include="'./templates/footer.tmpl.html'"></div>
+
+
+
+
+<!--bower:js-->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<!--endinject-->
+
+
+<!--inject:js-->
+<script src="movie.js"></script>
+<script src="app/services/user-edit.service.js"></script>
+<script src="app/services/user-account.service.js"></script>
+<script src="app/services/sign-up.service.js"></script>
+<script src="app/services/payment.service.js"></script>
+<script src="app/services/movie.service.js"></script>
+<script src="app/services/movie-edit.service.js"></script>
+<script src="app/services/movie-delete.service.js"></script>
+<script src="app/services/movie-add.service.js"></script>
+<script src="app/services/main-grid.service.js"></script>
+<script src="app/services/login.service.js"></script>
+<script src="app/services/custom-cookie.service.js"></script>
+<script src="app/directives/navbar.directive.js"></script>
+<script src="app/controllers/user-edit.controller.js"></script>
+<script src="app/controllers/user-account.controller.js"></script>
+<script src="app/controllers/sign-up.controller.js"></script>
+<script src="app/controllers/payment.controller.js"></script>
+<script src="app/controllers/navbar.controller.js"></script>
+<script src="app/controllers/movie.controller.js"></script>
+<script src="app/controllers/movie-edit.controller.js"></script>
+<script src="app/controllers/movie-delete.controller.js"></script>
+<script src="app/controllers/movie-add.controller.js"></script>
+<script src="app/controllers/main-grid.controller.js"></script>
+<script src="app/controllers/login.controller.js"></script>
+<script src="app/configuration/module.config.js"></script>
+<script src="js/ui-bootstrap-tpls-2.1.4.min.js"></script>
+<script src="movie.constant.js"></script>
+<!--endinject-->
+
+</body>
+
+</html>
